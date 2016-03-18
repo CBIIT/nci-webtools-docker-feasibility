@@ -13,8 +13,6 @@ RUN yum -y upgrade && yum -y install \
     python-devel \
     python-pip && yum clean all 
 
-RUN yum -y install 
-
 EXPOSE 80
 
 COPY httpd.conf /etc/httpd/conf/httpd.conf
