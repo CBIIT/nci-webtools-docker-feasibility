@@ -11,10 +11,12 @@ cd /var/www/html/apc && exec python apc.py &
 rm -rf /run/httpd/* /tmp/httpd*
 
 cd /etc/httpd/conf
-echo "ServerName localhost:80" >> httpd.conf
-echo "RedirectMatch ^${2}$ ${2}/" >> httpd.conf
-echo "<Location ${2}/>" >> httpd.conf
-echo "ProxyPass http://localhost:${1}${2}/" >> httpd.conf
-echo "</Location>" >> httpd.conf
+cat <<EOT >> httpd.conf
+ServerName localhost:80
+RedirectMatch ^${2}$ ${2}/
+<Location ${2}/>
+ProxyPass http://localhost:${1}${2}/
+</Location>
+EOT
 
 exec apachectl -DFOREGROUND
