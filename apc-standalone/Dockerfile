@@ -14,6 +14,7 @@ RUN yum -y upgrade && yum -y install \
     R && yum clean all 
 
 RUN pip install --upgrade pip && pip install flask rpy2
+RUN R CMD javareconf -e
 RUN R -e "install.packages(c('jsonlite', 'xlsx'), repos='http://cran.rstudio.com')"
 RUN ln -s /usr/lib/jvm/jre/lib/amd64/server/libjvm.so /usr/lib64/libjvm.so
 
