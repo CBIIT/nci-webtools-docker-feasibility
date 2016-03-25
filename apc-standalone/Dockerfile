@@ -9,6 +9,7 @@ RUN yum -y upgrade && yum -y install \
     python-devel \
     python-pip \
     readline-devel \
+    java-1.8.0-openjdk-* \
     git \
     R && yum clean all 
 
