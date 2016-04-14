@@ -33,10 +33,6 @@ To test out the mod_wsgi apc container image run:
 docker build -t apc_mod-wsgi .
 docker run -it -p 9040:9040 apc_mod-wsgi
 ```
-example:
-```
-docker run -it -p apc_mod-wsgi 
-```
 
 And navigate to http://localhost:9040/apc
 
