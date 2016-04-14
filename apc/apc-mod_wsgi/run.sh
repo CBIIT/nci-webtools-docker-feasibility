@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mkdir -p /test/git /test/deploy /test/wsgi
+mkdir -p /test /test/git /test/deploy /test/wsgi
 
 cd /test/git
 git clone https://github.com/CBIIT/nci-webtools-dceg-age-period-cohort.git
