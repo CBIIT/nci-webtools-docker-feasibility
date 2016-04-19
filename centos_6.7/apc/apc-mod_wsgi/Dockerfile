@@ -44,11 +44,6 @@ RUN tar -xf /rpy2-2.5.6.tar.gz && cd /rpy2-2.5.6 && python setup.py install
 
 EXPOSE 80
 
-#COPY run.sh /run.sh
-#RUN chmod -v +x /run.sh
-
-
-
 RUN mkdir /deploy
 
 RUN git clone https://github.com/CBIIT/nci-webtools-dceg-age-period-cohort.git /deploy/tmp
