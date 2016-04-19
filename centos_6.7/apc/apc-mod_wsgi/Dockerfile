@@ -27,7 +27,7 @@ RUN pip install --upgrade pip
 
 RUN pip install argparse
 RUN pip install flask
-RUN pip install rpy2
+#RUN pip install rpy2
 RUN pip install mod_wsgi
 
 RUN R CMD javareconf -e
@@ -39,4 +39,5 @@ EXPOSE 80
 COPY run.sh /run.sh
 RUN chmod -v +x /run.sh
 
-ENTRYPOINT ["/run.sh"]
+ENTRYPOINT ["/bin/bash"]
+#ENTRYPOINT ["/run.sh"]
