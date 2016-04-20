@@ -39,7 +39,7 @@ RUN cd /tmp \
 	&& curl -O https://www.python.org/ftp/python/2.7.11/Python-2.7.11.tgz \
 	&& tar xf Python-2.7.11.tgz \
 	&& cd Python-2.7.11 \
-	&& ./configure --prefix=/usr/local --enable-shared \
+	&& ./configure --prefix=/usr/local \
 	&& make \
 	&& make altinstall
 
