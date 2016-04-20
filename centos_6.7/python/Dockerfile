@@ -6,7 +6,7 @@ RUN yum -y install epel-release \
 RUN yum -y upgrade \
 	&& yum clean all
 
-RUN yum -y --setopt=group_package_types=optional groupinstall development \
+RUN yum -y groupinstall development \
 	&& yum clean all
 
 RUN yum -y install \
@@ -15,6 +15,7 @@ RUN yum -y install \
 	bzip2-devel \
 	expat-devel \
 	findutils \
+	gdbm-devel \
 	glibc-devel \
 	gmp-devel \
 	libdb-devel \
@@ -25,11 +26,11 @@ RUN yum -y install \
 	openssl-devel \
 	readline-devel \
 	sqlite-devel \
+	systemtap-sdt-devel \
 	tar \
 	tcl-devel \
 	tix-devel \
 	tk-devel \
-	zlib-devel \
-	gdbm-devel \
 	valgrind-devel \
+	zlib-devel \
 	&& yum clean all
