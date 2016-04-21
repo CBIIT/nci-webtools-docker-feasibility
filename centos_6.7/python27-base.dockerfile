@@ -45,12 +45,13 @@ RUN cd /tmp \
 	&& curl -O https://www.python.org/ftp/python/2.7.11/Python-2.7.11.tgz \
 	&& tar xf Python-2.7.11.tgz \
 	&& cd Python-2.7.11 \
-	&& ./configure --prefix=/usr/local \
+	&& ./configure 	--enable-shared --prefix=/usr/local \
 	&& make \
 	&& make altinstall
 
 RUN ln -s /usr/local/bin/python2.7 /usr/local/bin/python
+ENV LD_LIBRARY_PATH /usr/local/lib
 
-RUN curl https://bootstrap.pypa.io/ez_setup.py | python
-RUN curl https://bootstrap.pypa.io/get-pip.py | python
+RUN cd /tmp && curl https://bootstrap.pypa.io/ez_setup.py | python
+RUN cd /tmp && curl https://bootstrap.pypa.io/get-pip.py | python
 
