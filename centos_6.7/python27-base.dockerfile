@@ -6,6 +6,9 @@ RUN yum -y install epel-release \
 RUN yum -y upgrade \
 	&& yum clean all
 
+
+# Install required packages for building python
+
 RUN yum -y groupinstall development \
 	&& yum clean all
 
@@ -35,7 +38,8 @@ RUN yum -y install \
 	zlib-devel \
 	&& yum clean all
 
-#build python 2.7.11 from source
+
+# Build python 2.7.11 from source
  
 RUN cd /tmp \
 	&& curl -O https://www.python.org/ftp/python/2.7.11/Python-2.7.11.tgz \
