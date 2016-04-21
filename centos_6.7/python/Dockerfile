@@ -35,6 +35,8 @@ RUN yum -y install \
 	zlib-devel \
 	&& yum clean all
 
+#build python 2.7.11 from source
+ 
 RUN cd /tmp \
 	&& curl -O https://www.python.org/ftp/python/2.7.11/Python-2.7.11.tgz \
 	&& tar xf Python-2.7.11.tgz \
