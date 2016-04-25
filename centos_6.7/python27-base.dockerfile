@@ -37,26 +37,30 @@ RUN yum -y install \
 	tk-devel \
 	valgrind-devel \
 	zlib-devel \
-	&& yum clean all
+	&& yum clean all \
 
-
-# Build python 2.7.11 from source
+	
+	# Build python 2.7.11 from source
  
-RUN cd /tmp \
+	&& cd /tmp \
 	&& curl -O https://www.python.org/ftp/python/2.7.11/Python-2.7.11.tgz \
 	&& tar xf Python-2.7.11.tgz \
 	&& cd Python-2.7.11 \
 	&& ./configure 	--enable-shared --prefix=/usr/local \
 	&& make \
-	&& make altinstall
+	&& make altinstall \
+	&& cd ~ \
+	&& rm -rf /tmp/* \
 
-RUN yum -y remove \
+
+	# Remove build-time dependencies
+
+	&& yum -y remove \
 
         bluez-libs-devel \
         bzip2-devel \
         expat-devel \
         gdbm-devel \
-        glibc-devel \
         gmp-devel \
         libGL-devel \
         libX11-devel \

@@ -1,5 +1,7 @@
 FROM cbiitss:rbase
 
+RUN yum install -y git && yum clean all
+
 RUN mkdir /deploy
 
 RUN git clone https://github.com/CBIIT/nci-webtools-dceg-age-period-cohort.git /deploy/app 
