@@ -9,10 +9,11 @@ RUN yum -y upgrade \
 
 # Install required packages for building python
 
-RUN yum -y groupinstall development \
-	&& yum clean all
-
 RUN yum -y install \
+
+	autoconf \
+	gcc-c++ \
+	pkgconfig \
 	bluez-libs-devel \
 	bzip2 \
 	bzip2-devel \
@@ -49,9 +50,99 @@ RUN cd /tmp \
 	&& make \
 	&& make altinstall
 
+RUN yum -y remove \
+
+        bluez-libs-devel \
+        bzip2-devel \
+        expat-devel \
+        gdbm-devel \
+        glibc-devel \
+        gmp-devel \
+        libGL-devel \
+        libX11-devel \
+        openssl-devel \
+        sqlite-devel \
+        systemtap-sdt-devel \
+        tcl-devel \
+        tix-devel \
+        tk-devel \
+        valgrind-devel \
+        zlib-devel \
+	bluez-libs \
+	cloog-ppl \
+	fontconfig \
+	fontconfig-devel \
+	freetype \
+	freetype-devel \
+	glibc-headers \
+	hwdata \
+	initscripts \
+	iproute \
+	iptables \
+	iputils \
+	kernel-headers \
+	keyutils-libs-devel \
+	krb5-devel \
+	libX11 \
+	libX11-common \
+	libXau \
+	libXau-devel \
+	libXdamage \
+	libXdamage-devel \
+	libXext \
+	libXext-devel \
+	libXfixes \
+	libXfixes-devel \
+	libXft \
+	libXft-devel \
+	libXrender \
+	libXrender-devel \
+	libXxf86vm \
+	libXxf86vm-devel \
+	libcom_err-devel \
+	libdrm \
+	libdrm-devel \
+	libgomp \
+	libpciaccess \
+	libselinux-devel \
+	libsemanage \
+	libsepol-devel \
+	libstdc++-devel \
+	libxcb \
+	libxcb-devel \
+	m4 \
+	mesa-dri-drivers \
+	mesa-dri-filesystem \
+	mesa-dri1-drivers \
+	mesa-libGL \
+	mesa-private-llvm \
+	mingetty \
+	module-init-tools \
+	mpfr \
+	perl \
+	perl-Module-Pluggable \
+	perl-Pod-Escapes \
+	perl-Pod-Simple \
+	perl-libs \
+	perl-version \
+	policycoreutils \
+	ppl \
+	psmisc \
+	sysvinit-tools \
+	tcl \
+	tix \
+	tk \
+	udev \
+	upstart \
+	util-linux-ng \
+	valgrind \
+	xorg-x11-proto-devel \
+        && yum clean all
+
+
 RUN ln -s /usr/local/bin/python2.7 /usr/local/bin/python
 ENV LD_LIBRARY_PATH /usr/local/lib
 
-RUN cd /tmp && curl https://bootstrap.pypa.io/ez_setup.py | python
+RUN cd /tmp && curl https://bootstrap.pypa.io/ez_setup.py | python - --version=20.9.0
 RUN cd /tmp && curl https://bootstrap.pypa.io/get-pip.py | python
 
