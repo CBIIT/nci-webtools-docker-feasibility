@@ -52,6 +52,6 @@ RUN cd /tmp \
 RUN ln -s /usr/local/bin/python2.7 /usr/local/bin/python
 ENV LD_LIBRARY_PATH /usr/local/lib
 
-RUN cd /tmp && curl https://bootstrap.pypa.io/ez_setup.py | python
+RUN cd /tmp && curl https://bootstrap.pypa.io/ez_setup.py | python - --version=20.9.0
 RUN cd /tmp && curl https://bootstrap.pypa.io/get-pip.py | python
 
