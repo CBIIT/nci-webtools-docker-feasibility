@@ -1,4 +1,4 @@
-FROM cbiitss:rbase_ius
+FROM cbiitss:rbase
 
 RUN yum install -y git \
  && yum clean all
