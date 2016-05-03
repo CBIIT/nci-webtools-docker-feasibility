@@ -3,7 +3,12 @@ FROM cbiitss:rbase
 RUN yum install -y git mongodb samtools \
  && yum clean all
 
+COPY dependencies/tabix-0.2.6-2.1.x86_64.rpm .
+RUN yum localinstall -y tabix-0.2.6-2.1.x86_64.rpm
+
 RUN pip install numpy pandas scipy bokeh
+
+RUN mongod --dbpath /data/db/ --auth --port 27017
 
 RUN mkdir /deploy \
  && git clone https://github.com/CBIIT/nci-webtools-dceg-linkage.git /tmp/app \
