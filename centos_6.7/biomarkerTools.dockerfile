@@ -4,7 +4,7 @@ RUN yum install -y git \
  && yum clean all
 
 RUN pip install numpy pandas scipy
-RUN R -e "install.packages(c('RJSONIO', 'stringr'), repos='http://cran.rstudio.com')"
+RUN R -e "install.packages(c('RJSONIO', 'stringr', 'pROC'), repos='http://cran.rstudio.com')"
 
 RUN mkdir /deploy \
  && git clone https://github.com/CBIIT/nci-webtools-dceg-sw-computational-tools.git /tmp/app \
