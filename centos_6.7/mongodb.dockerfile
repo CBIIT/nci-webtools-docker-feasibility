@@ -1,21 +1,17 @@
+FROM	centos:6.7
 
-RUN	cat <<EOT >> /etc/yum.repos.d/mongodb-org-3.2.repo
-[mongodb-org-3.2]
-name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.2/x86_64/
-gpgcheck=1
-enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-3.2.asc
-EOT
 
-RUN	cat <<EOT >> /deploy.sh
-#!/bin/bash
-service mongod start
-EOT
+RUN	printf "\
+[mongodb-org-3.2] \n\
+name=MongoDB Repository \n\
+baseurl=https://repo.mongodb.org/yum/redhat/6/mongodb-org/3.2/x86_64/ \n\
+gpgcheck=1 \n\
+enabled=1 \n\
+gpgkey=https://www.mongodb.org/static/pgp/server-3.2.asc \n\
+" >> /etc/yum.repos.d/mongodb-org-3.2.repo
 
 RUN mkdir -p /data/db
 
 RUN	yum install -y mongodb-org &&\
 	yum clean all
 
-RUN semanage port -a -t mongod_port_t -p tcp 27017
