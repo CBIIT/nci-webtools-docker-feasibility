@@ -6,4 +6,6 @@ RUN	rpm --import https://www.mongodb.org/static/pgp/server-3.2.asc &&\
 	yum install -y mongodb-org &&\
 	yum clean all
 
+EXPOSE	27017
+
 CMD	["mongod"]
