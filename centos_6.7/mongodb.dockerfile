@@ -1,17 +1,14 @@
-FROM	centos:6.7
+FROM    centos:6.7
 
+RUN     mkdir -p /data/db
 
-RUN	printf "\
-[mongodb-org-3.2] \n\
-name=MongoDB Repository \n\
-baseurl=https://repo.mongodb.org/yum/redhat/6/mongodb-org/3.2/x86_64/ \n\
-gpgcheck=1 \n\
-enabled=1 \n\
-gpgkey=https://www.mongodb.org/static/pgp/server-3.2.asc \n\
-" >> /etc/yum.repos.d/mongodb-org-3.2.repo
+RUN     yum install -y yum-utils &&\
+        yum clean all
 
-RUN mkdir -p /data/db
+RUN     rpm --import https://www.mongodb.org/static/pgp/server-3.2.asc &&\
+        yum-config-manager --add-repo https://repo.mongodb.org/yum/redhat/6/mongodb-org/3.2/x86_64/ &&\
+        yum install -y mongodb-org &&\
+        yum clean all
 
-RUN	yum install -y mongodb-org &&\
-	yum clean all
+RUN     ["mongod"]
 
