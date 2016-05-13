@@ -6,9 +6,7 @@ RUN	yum localinstall -y tabix-0.2.6-2.1.x86_64.rpm &&\
 	yum install -y git mongodb samtools &&\
 	yum clean all
 
-RUN	pip install numpy pandas scipy bokeh
-
-RUN	mkdir /deploy									&&\
+RUN	mkdir /deploy /local/content/ldlink/data					&&\
 	git clone https://github.com/CBIIT/nci-webtools-dceg-linkage.git /tmp/app	&&\
 	git clone https://github.com/CBIIT/nci-analysis-tools-web-presence.git /tmp/web	&&\
 	mv /tmp/app/LDlink /deploy/app/							&&\
