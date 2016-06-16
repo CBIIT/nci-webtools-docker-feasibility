@@ -26,4 +26,4 @@ RUN mod_wsgi-express setup-server /deploy/app/LDlink.wsgi \
     --directory-index index.html \
  && chown -R apache:apache /deploy
 
-#ENTRYPOINT	["/deploy/apachectl", "start", "-DFOREGROUND"]
+ENTRYPOINT	["/deploy/apachectl", "start", "-DFOREGROUND"]
