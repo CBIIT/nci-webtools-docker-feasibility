@@ -30,6 +30,6 @@ RUN mod_wsgi-express setup-server $root/app/$name.wsgi \
 	--rotate-logs \
 	--error-log-name $name.log \
 	--include-file $root/wsgi/$conf \
- && chown -R apache:apache /deploy
+ && chown -R apache:apache $root
 
 ENTRYPOINT ["/deploy/wsgi/apachectl", "start", "-DFOREGROUND"]
