@@ -1,5 +1,21 @@
 FROM cbiitss:rbase
 
-RUN R -e "install.packages(c('readxl', 'plyr', 'dplyr', 'reshape2', 'psych', 'tidyr', 'GeneNet'), repos='https://cran.rstudio.com')"
-RUN mkdir /deploy
+RUN adduser -u 4004 ncianalysis
 
+RUN mkdir -p /deploy \
+ && chown -R ncianalysis:ncianalysis /deploy
+
+USER ncianalysis
+WORKDIR /deploy
+
+ENTRYPOINT ["mod_wsgi-express"]
+CMD ["start-server", "app/deploy.wsgi", \
+  "--port", "8000", \
+  "--user", "ncianalysis", \
+  "--group", "ncianalysis", \
+  "--server-root", "wsgi", \
+  "--document-root", "app", \
+  "--working-directory", "app", \
+  "--directory-index", "index.html", \
+  "--log-directory", "logs", \
+  "--rotate-logs"]
