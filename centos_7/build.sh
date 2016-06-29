@@ -2,16 +2,17 @@
 
 NAMESPACE=$1
 
-if [ -n $NAMESPACE ]; then
-  echo "You may provide a namespace when building these images using the following syntax: "
-  echo "    ./build.sh image_namespace"
+if [[ -z $NAMESPACE ]]; then
+  NAMESPACE=cbiitss
+
+  echo "You may provide a namespace when running this script: "
+  echo "    sh build.sh image_namespace"
   echo
-  echo "Image building will proceed with the default namespace: cbiitss"
+  echo "Using default namespace: $NAMESPACE"
   echo
-  $NAMESPACE=cbiitss
 fi
 
-echo "This script will create or overwrite the following images: "
+echo "The following images will be (re)built: "
 for IMAGE_NAME in python_web r_web python_deploy r_deploy; do
   echo "$NAMESPACE:$IMAGE_NAME"
 done
