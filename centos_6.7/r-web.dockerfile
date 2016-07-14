@@ -1,4 +1,4 @@
-FROM cbiitss:rbase
+FROM cbiitss:r-base
 
 RUN adduser -u 4004 ncianalysis
 
