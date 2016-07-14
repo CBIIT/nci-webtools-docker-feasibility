@@ -10,7 +10,7 @@
 APP_PORT=
 APP_ROOT=
 DOCKER_IMAGE=cbiitss
-DOCKER_TAG=r_web
+DOCKER_TAG=r-web
 
 while true; do
   case $1 in
