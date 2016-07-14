@@ -13,10 +13,52 @@ Python/R-based tools
 Python-based tools
 - LDlink (https://github.com/CBIIT/nci-webtools-dceg-linkage.git)
 - Glossary of Cancer Terms (https://github.com/CBIIT/nci-analysis-tools-glossary.git)
+- NCIDOSE (https://github.com/CBIIT/nci-webtools-dceg-ncidose.git)
+- eConsent (https://github.com/CBIIT/nci-webtools-dceg-econsent.git)
 
-**python27-base.dockerfile**  - contains python 2.7.11 and associated setuptools
+####Installed Dependencies
+System Packages
+- Python 2.7.11
+- R 
+- Java
 
-**python27-web.dockerfile** - contains apache development libraries as well as flask and mod_wsgi
+Other System Packages
+- tabix
+- wkhtmltopdf
 
-**r-base.dockerfile** - contains R and packages pertaining to R development
+
+R packages
+- ggplot2
+- plyr
+- dplyr
+- psych
+- readxl
+- xlsx
+- openxlsx
+- jsonlite
+- rjson
+- RJSONIO
+- stringr
+- pROC
+
+Tool-specific R Packages
+- JPSurv
+- ARTP2 (Pathway Analysis)
+- coxph.risk (Lung Cancer Screening)
+- iCARE (Absolute Risk Calculator)
+
+Python packages
+- flask
+- rpy2
+- bokeh
+- pandas
+- numpy
+- scipy
+- stompest
+- stompest.async
+- twisted
+- pymongo
+- weasyprint
+- pdfkit
+
 
