@@ -16,3 +16,4 @@ RUN yum -y upgrade \
 RUN pip install --upgrade pip
 RUN pip install flask mod_wsgi pandas numpy bokeh
 RUN pip install scipy
+RUN pip install stompest stompest.async twisted pymongo weasyprint pdfkit pysqlcipher
