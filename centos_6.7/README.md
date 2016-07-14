@@ -16,6 +16,8 @@ Python-based tools
 - NCIDOSE (https://github.com/CBIIT/nci-webtools-dceg-ncidose.git)
 - eConsent (https://github.com/CBIIT/nci-webtools-dceg-econsent.git)
 
+
+
 ####Installed Dependencies
 System Packages
 - Python 2.7.11
@@ -25,7 +27,6 @@ System Packages
 Other System Packages
 - tabix
 - wkhtmltopdf
-
 
 R packages
 - ggplot2
@@ -60,5 +61,5 @@ Python packages
 - pymongo
 - weasyprint
 - pdfkit
-
+- pysqlcipher
 
