@@ -25,6 +25,8 @@ System Packages
 - Java
 
 Other System Packages
+- mongodb
+- samtools
 - tabix
 - wkhtmltopdf
 
