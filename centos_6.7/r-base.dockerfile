@@ -1,4 +1,4 @@
-FROM cbiitss:python_web
+FROM cbiitss:python-web
 
 RUN yum -y upgrade && yum clean all
 RUN yum -y install R && yum clean all
