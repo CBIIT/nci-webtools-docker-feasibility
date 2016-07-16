@@ -13,7 +13,7 @@ RUN yum -y upgrade \
         httpd-devel \
  && yum clean all
  
-COPY dependencies/tabix-0.2.6-2.1.x86_64.rpm .
+COPY centos_6.7/dependencies/tabix-0.2.6-2.1.x86_64.rpm .
 
 RUN yum install -y mongodb samtools \
  && yum localinstall -y tabix-0.2.6-2.1.x86_64.rpm https://bitbucket.org/wkhtmltopdf/wkhtmltopdf/downloads/wkhtmltox-0.13.0-alpha-7b36694_linux-centos6-amd64.rpm\
