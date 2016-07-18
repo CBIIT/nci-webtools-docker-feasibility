@@ -1,5 +1,8 @@
 FROM cbiitss:python27
 
+COPY dependencies /tmp
+WORKDIR /tmp
+
 RUN yum -y upgrade \
  && yum -y install \
         redhat-rpm-config \
@@ -11,15 +14,37 @@ RUN yum -y upgrade \
         blas-devel \
         httpd \
         httpd-devel \
+	mongodb \
+	samtools \
+	libxml2 \
+	libxml2-python \
+	libxml2-devel \
+	libxslt \
+	libxslt-devel \
+	libxslt-python \
+	python-lxml \
+	python-devel \
+	openssl-devel \
+	xz \
+ && yum localinstall -y tabix-0.2.6-2.1.x86_64.rpm \
  && yum clean all
- 
-COPY dependencies/tabix-0.2.6-2.1.x86_64.rpm .
 
-RUN yum install -y mongodb samtools \
- && yum localinstall -y tabix-0.2.6-2.1.x86_64.rpm https://bitbucket.org/wkhtmltopdf/wkhtmltopdf/downloads/wkhtmltox-0.13.0-alpha-7b36694_linux-centos6-amd64.rpm\
- && yum clean all
+RUN curl http://download.gna.org/wkhtmltopdf/0.12/0.12.3/wkhtmltox-0.12.3_linux-generic-amd64.tar.xz | tar xJ \
+ && cp -r wkhtmltox/* /usr/
 
 RUN pip install --upgrade pip
-RUN pip install flask mod_wsgi pandas numpy bokeh
-RUN pip install scipy
-RUN pip install stompest stompest.async twisted pymongo weasyprint pdfkit pysqlcipher pymongo
+RUN pip install \
+	flask \
+	mod_wsgi \
+	pandas \
+	numpy \
+	bokeh \
+	stompest \
+	stompest.async \
+	twisted \
+	pymongo \
+	weasyprint \
+	pdfkit \
+	pysqlcipher \
+	pymongo \
+ && pip install scipy	
