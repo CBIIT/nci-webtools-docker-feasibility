@@ -43,9 +43,12 @@ R packages
 - RJSONIO
 - stringr
 - pROC
+- data.table
+- Formula
 
 Tool-specific R Packages
 - JPSurv
+- CometsAnalyticsPackage (private)
 - ARTP2 (Pathway Analysis)
 - coxph.risk (Lung Cancer Screening)
 - iCARE (Absolute Risk Calculator)
