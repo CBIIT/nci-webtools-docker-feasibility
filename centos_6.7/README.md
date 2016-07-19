@@ -45,6 +45,7 @@ R packages
 - pROC
 - data.table
 - Formula
+- VGAM
 
 Tool-specific R Packages
 - JPSurv
