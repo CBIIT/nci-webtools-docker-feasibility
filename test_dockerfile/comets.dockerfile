@@ -43,6 +43,8 @@ RUN adduser -u 4004 ncianalysis
 RUN mkdir -p /deploy \
  && chown -R ncianalysis:ncianalysis /deploy
 
+RUN touch /tmp/luw01
+
 USER ncianalysis
 WORKDIR /deploy
 
