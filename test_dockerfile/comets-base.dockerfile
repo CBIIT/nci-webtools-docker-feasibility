@@ -6,11 +6,12 @@ RUN yum -y upgrade \
         gcc-c++ \
         gcc-gfortran \
         httpd-devel \
+        libcurl-devel \
         R \
  && yum clean all
 
 RUN pip install --upgrade pip rpy2
-RUN R -e "install.packages(c('jsonlite', 'plyr', 'dplyr', 'psych', 'readxl', 'stringr'), repos='http://cran.rstudio.com')"
+RUN R -e "install.packages(c('jsonlite', 'plyr', 'dplyr', 'psych', 'readxl', 'stringr', 'tidyr', 'plotly'), repos='http://cran.rstudio.com')"
 
 RUN adduser -u 4004 ncianalysis
 
