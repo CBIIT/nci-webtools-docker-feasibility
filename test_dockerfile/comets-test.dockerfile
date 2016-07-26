@@ -8,12 +8,14 @@ RUN yum -y upgrade \
         gcc-c++ \
         gcc-gfortran \
         httpd-devel \
+        libcurl-devel \
+        openssl-devel \
         R \
  && yum clean all
 
-RUN R -e "install.packages(c('jsonlite', 'plyr', 'dplyr', 'psych', 'readxl', 'stringr'), repos='http://cran.rstudio.com')"
+RUN R -e "install.packages(c('jsonlite', 'plyr', 'dplyr', 'psych', 'readxl', 'stringr', 'tidyr', 'plotly'), repos='http://cran.rstudio.com')"
 RUN R -e "install.packages('/tmp/CometsAnalyticsPackage.tar.gz', repos=NULL)"
-RUN pip install --upgrade pip rpy2
+RUN pip install --upgrade pip rpy2 mod_wsgi flask
 
 RUN adduser -u 4004 ncianalysis
 
