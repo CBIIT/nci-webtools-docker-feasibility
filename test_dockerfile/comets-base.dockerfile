@@ -10,7 +10,7 @@ RUN yum -y upgrade \
         R \
  && yum clean all
 
-RUN pip install --upgrade pip rpy2
+RUN pip install --upgrade pip rpy2 mod_wsgi flask
 RUN R -e "install.packages(c('jsonlite', 'plyr', 'dplyr', 'psych', 'readxl', 'stringr', 'tidyr', 'plotly'), repos='http://cran.rstudio.com')"
 
 RUN adduser -u 4004 ncianalysis
