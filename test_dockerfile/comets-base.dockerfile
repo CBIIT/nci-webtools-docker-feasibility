@@ -7,6 +7,7 @@ RUN yum -y upgrade \
         gcc-gfortran \
         httpd-devel \
         libcurl-devel \
+        openssl-devel \
         R \
  && yum clean all
 
