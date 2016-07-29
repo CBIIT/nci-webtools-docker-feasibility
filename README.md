@@ -38,25 +38,34 @@ To try these dockerfiles out on a docker-enabled machine, you can run the build.
 To start an application, clone the application source and mount it within the container in the docker run command. This is an example for the [Age Period Cohort Tool](https://github.com/CBIIT/nci-webtools-dceg-age-period-cohort).
 
 ```bash
+# Create a deployment directory
+mkdir -p /local/apc /local/logs /local/git
+
 # Clone the docker feasibility study repository and build the images
-git clone https://github.com/CBIIT/nci-webtools-docker-feasibility.git
+cd /local/git && git clone https://github.com/CBIIT/nci-webtools-docker-feasibility.git
 cd nci-webtools-docker-feasibility/centos_7 && source build.sh
 
-# Create a deployment directory
-mkdir -p /local/apc /local/logs
-
 # Clone the age period cohort repository and copy it to the deployment directory
-git clone https://github.com/CBIIT/nci-webtools-dceg-age-period-cohort.git
+cd /local/git && git clone https://github.com/CBIIT/nci-webtools-dceg-age-period-cohort.git
 cp -r nci-webtools-dceg-age-period-cohort/apc/* /local/apc/
 
 # Since the application also requires resources found in a different repository,
 # we should should clone it and copy its contents to the deployment directory
-git clone https://github.com/CBIIT/nci-analysis-tools-web-presence.git
+cd /local/git && git clone https://github.com/CBIIT/nci-analysis-tools-web-presence.git
 cp -r nci-analysis-tools-web-presence/common/ /local/apc/
 
 # Start the application
-docker run --detach --port 8040:8000 --volume /local/apc:/deploy/app --volume /local/logs:/deploy/logs r_deploy
+docker run \
+  --detach \
+  --publish 8040:8000 \
+  --uts "host" \
+  --env "app_name=apc" \
+  --volume /local/apc:/deploy/app \
+  --volume /local/logs:/deploy/logs \
+  r_deploy
 
-# Check to see if it's being hosted
-curl localhost:8040
+# View the running container
+docker ps
+
+# Navigate to http://localhost:8040 to see the application in action!
 ```
