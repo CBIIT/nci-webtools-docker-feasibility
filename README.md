@@ -25,9 +25,7 @@ We are also investigating best practices for deploying the following open-source
 ####Deploying Applications
 The images generated from these dockerfiles only contain the dependencies required to run the application - this approach allows for application code to be mounted within a container at runtime, eliminating the need to rebuild the image on every change.
 
-It is recommended to build these images against a specified namespace - in this case, the default is cbiitss but this should be updated before building (eg: to specify a url within a private docker registry).
-
-To try these dockerfiles out on a docker-enabled machine, you can run the build.sh scripts provided to build these images against the default namespace.
+Run the build.sh script provided to build these images against the default namespace - you can also specify the namespace as an argument (eg: sh build.sh project_namespace).
 
 | Default image         | File                        | Description                                          | 
 | --------------------- | --------------------------- | ---------------------------------------------------- |
@@ -70,3 +68,4 @@ docker ps
 
 # Navigate to http://localhost:8040 to see the application in action!
 ```
+
