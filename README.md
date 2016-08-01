@@ -18,9 +18,9 @@ The following tools are supported by this study:
 - [Pathway Analysis Tool](https://github.com/CBIIT/nci-webtools-dceg-pathway-analysis)
 
 We are also investigating best practices for deploying the following open-source projects:
-- ActiveMQ
-- Jenkins
-- MongoDB
+- [ActiveMQ](https://github.com/apache/activemq)
+- [Jenkins](https://github.com/jenkinsci/jenkins)
+- [MongoDB](https://github.com/mongodb/mongo)
 
 ####Deploying Applications
 The images generated from these dockerfiles only contain the dependencies required to run the application - this approach allows for application code to be mounted within a container at runtime, eliminating the need to rebuild the image on every change.
@@ -58,6 +58,7 @@ docker run \
   --detach \
   --publish 8040:8000 \
   --uts "host" \
+  --name apc \
   --env "app_name=apc" \
   --volume /local/apc:/deploy/app \
   --volume /local/logs:/deploy/logs \
