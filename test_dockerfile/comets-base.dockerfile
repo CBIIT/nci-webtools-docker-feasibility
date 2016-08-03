@@ -10,6 +10,7 @@ RUN yum -y upgrade \
         libssh2-devel \
         openssl-devel \
         R \
+        R-devel \
  && yum clean all
 
 RUN pip install --upgrade pip rpy2 mod_wsgi flask
