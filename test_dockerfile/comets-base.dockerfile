@@ -15,7 +15,7 @@ RUN yum -y upgrade \
 
 RUN pip install --upgrade pip rpy2 mod_wsgi flask
 
-RUN R -e "install.packages('devtools', repos = 'http://cran.rstudio.com')"
+RUN R -e "install.packages(c('devtools', 'roxygen2'), repos = 'http://cran.rstudio.com')"
 
 RUN R -e "require(devtools); \ 
             install_version('jsonlite',  version = '0.9.22',  repos = 'http://cran.rstudio.com'); \
