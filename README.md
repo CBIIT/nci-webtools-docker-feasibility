@@ -18,6 +18,7 @@ The following tools are supported by this study:
 - [Pathway Analysis Tool](https://github.com/CBIIT/nci-webtools-dceg-pathway-analysis)
 
 We are also investigating best practices for deploying the following open-source projects:
+- [Apache](https://github.com/apache/httpd)
 - [ActiveMQ](https://github.com/apache/activemq)
 - [Jenkins](https://github.com/jenkinsci/jenkins)
 - [MongoDB](https://github.com/mongodb/mongo)
