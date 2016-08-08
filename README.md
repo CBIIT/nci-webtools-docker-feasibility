@@ -18,8 +18,8 @@ The following tools are supported by this study:
 - [Pathway Analysis Tool](https://github.com/CBIIT/nci-webtools-dceg-pathway-analysis)
 
 We are also investigating best practices for deploying the following open-source projects:
-- [Apache](https://github.com/apache/httpd)
 - [ActiveMQ](https://github.com/apache/activemq)
+- [Apache HTTP Server](https://github.com/apache/httpd)
 - [Jenkins](https://github.com/jenkinsci/jenkins)
 - [MongoDB](https://github.com/mongodb/mongo)
 
@@ -30,10 +30,10 @@ Run the build.sh script provided to build these images against the default names
 
 | Default image         | File                        | Description                                          | 
 | --------------------- | --------------------------- | ---------------------------------------------------- |
-| cbiitss:python_web    | python_web.dockerfile       | Contains python web application dependencies         |
-| cbiitss:python_deploy | python_deploy.dockerfile    | Deploys python web applications from source files    |
-| cbiitss:r_web         | r_web.dockerfile            | Contains python/R web application dependencies       |
-| cbiitss:r_deploy      | r_deploy.dockerfile         | Deploys python/R web applications from source files  |
+| cbiitss/python_web    | python_web.dockerfile       | Contains python web application dependencies         |
+| cbiitss/r_web         | r_web.dockerfile            | Contains python/R web application dependencies       |
+| cbiitss/python_deploy | python_deploy.dockerfile    | Deploys python web applications from source files    |
+| cbiitss/r_deploy      | r_deploy.dockerfile         | Deploys python/R web applications from source files  |
 
 To start an application, clone the application source and mount it within the container in the docker run command. This is an example for the [Age Period Cohort Tool](https://github.com/CBIIT/nci-webtools-dceg-age-period-cohort).
 
