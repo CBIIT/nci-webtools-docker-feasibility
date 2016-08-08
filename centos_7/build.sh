@@ -1,6 +1,7 @@
 #!/bin/bash
 
 NAMESPACE=$1
+VERSION="v0"
 
 if [[ -z $NAMESPACE ]]; then
   NAMESPACE=cbiitss
@@ -21,6 +22,6 @@ read -p "Enter (Y) to continue building these images: " input
 
 if  [[ "$input" == [Yy] ]]; then
   for IMAGE_NAME in python_web r_web python_deploy r_deploy; do
-    docker build -t $NAMESPACE:$IMAGE_NAME -f $IMAGE_NAME.dockerfile .
+    docker build -f $IMAGE_NAME.dockerfile -t $NAMESPACE/$IMAGE_NAME:$VERSION .
   done
 fi
