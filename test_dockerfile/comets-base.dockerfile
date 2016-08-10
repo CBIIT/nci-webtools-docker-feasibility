@@ -7,7 +7,7 @@ RUN yum -y upgrade \
         gcc-gfortran \
         httpd-devel \
         libcurl-devel \
-        libpng10-devel \
+        libpng-devel \
         libssh2-devel \
         openssl-devel \
         R \
