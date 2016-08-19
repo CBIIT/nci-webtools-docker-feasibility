@@ -1,4 +1,4 @@
-# cbiitss/apc:c7
+# cbiitss/biomarkerTools:c7
 
 FROM cbiitss/r_base:c7
 
@@ -11,7 +11,7 @@ RUN yum -y install epel-release \
 
 RUN pip install --upgrade pip flask rpy2 mod_wsgi
 
-RUN R -e "install.packages(c('jsonlite', 'xlsx'))"
+RUN R -e "install.packages(c('RJSONIO', 'stringr', 'pROC', 'xlsx'))"
 
 RUN ln -s /usr/lib/jvm/jre/lib/amd64/server/libjvm.so /usr/lib64/libjvm.so
 
@@ -20,7 +20,7 @@ RUN mkdir -p /deploy
 WORKDIR /deploy
 
 ENTRYPOINT ["mod_wsgi-express"]
-CMD ["start-server", "app/apc.wsgi", \
+CMD ["start-server", "app/biomarkerTools.wsgi", \
   "--port", "8000", \
   "--user", "apache", \
   "--group", "apache", \
@@ -30,6 +30,6 @@ CMD ["start-server", "app/apc.wsgi", \
   "--directory-index", "index.html", \
   "--log-directory", "logs", \
   "--access-log", \
-  "--access-log-name", "apc-access.log", \
-  "--error-log-name", "apc.log", \
+  "--access-log-name", "biomarkerTools-access.log", \
+  "--error-log-name", "biomarkerTools.log", \
   "--rotate-logs"]
