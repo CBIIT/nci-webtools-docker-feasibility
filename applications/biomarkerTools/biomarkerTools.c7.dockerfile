@@ -1,4 +1,4 @@
-# cbiitss/biomarkerTools:c7
+# cbiitss/biomarkertools:c7
 
 FROM cbiitss/r_base:c7
 
@@ -9,7 +9,7 @@ RUN yum -y install epel-release \
     readline-devel \
  && yum clean all
 
-RUN pip install --upgrade pip flask rpy2 mod_wsgi
+RUN pip install --upgrade pip flask rpy2 mod_wsgi pandas numpy
 
 RUN R -e "install.packages(c('RJSONIO', 'stringr', 'pROC', 'xlsx'))"
 
