@@ -38,36 +38,32 @@ Run the build.sh script provided to build these images against the default names
 To start an application, clone the application source and mount it within the container in the docker run command. This is an example for the [Age Period Cohort Tool](https://github.com/CBIIT/nci-webtools-dceg-age-period-cohort).
 
 ```bash
-# Create a deployment directory
-mkdir -p /local/apc /local/logs /local/git
-
-# Clone the docker feasibility study repository and build the images
-cd /local/git && git clone https://github.com/CBIIT/nci-webtools-docker-feasibility.git
-cd nci-webtools-docker-feasibility/centos_7 && source build.sh
+# Create a deployment directory for the application
+mkdir -p /local/apc/app /local/apc/logs
 
 # Clone the age period cohort repository and copy it to the deployment directory
-cd /local/git && git clone https://github.com/CBIIT/nci-webtools-dceg-age-period-cohort.git
-cp -r nci-webtools-dceg-age-period-cohort/apc/* /local/apc/
+git clone https://github.com/CBIIT/nci-webtools-dceg-age-period-cohort.git /tmp/age-period-cohort
+cp -r /tmp/age-period-cohort/apc/* /local/apc/app/
 
 # Since the application also requires resources found in a different repository,
 # we should should clone it and copy its contents to the deployment directory
-cd /local/git && git clone https://github.com/CBIIT/nci-analysis-tools-web-presence.git
-cp -r nci-analysis-tools-web-presence/common/ /local/apc/
+git clone https://github.com/CBIIT/nci-analysis-tools-web-presence.git /tmp/web-presence
+cp -r /tmp/web-presence/common/ /local/apc/
 
 # Start the application
 docker run \
   --detach \
-  --publish 8040:8000 \
-  --uts "host" \
   --name apc \
-  --env "app_name=apc" \
+  --publish 8000:8000 \
+  --user `id -u`:`id -g` \
+  --volume /etc/localtime:/etc/localtime:ro \
   --volume /local/apc:/deploy/app \
   --volume /local/logs:/deploy/logs \
-  r_deploy
+  cbiitss/apc:c7
 
 # View the running container
 docker ps
 
-# Navigate to http://localhost:8040 to see the application in action!
+# Navigate to http://localhost:8000 to see the application in action!
 ```
 
