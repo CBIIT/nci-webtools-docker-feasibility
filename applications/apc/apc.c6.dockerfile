@@ -9,9 +9,15 @@ RUN yum -y install epel-release \
     readline-devel \
  && yum clean all
 
-RUN pip install --upgrade pip flask rpy2 mod_wsgi
+RUN pip install --upgrade \
+    flask \
+    mod_wsgi \
+    pip \
+    rpy2 \
 
-RUN R -e "install.packages(c('jsonlite', 'xlsx'))"
+RUN R -e "install.packages(c( \
+    'jsonlite', \
+    'xlsx'))"
 
 RUN ln -s /usr/lib/jvm/jre/lib/amd64/server/libjvm.so /usr/lib64/libjvm.so
 
@@ -22,8 +28,6 @@ WORKDIR /deploy
 ENTRYPOINT ["mod_wsgi-express"]
 CMD ["start-server", "app/apc.wsgi", \
   "--port", "8000", \
-  "--user", "apache", \
-  "--group", "apache", \
   "--server-root", "wsgi", \
   "--document-root", "app", \
   "--working-directory", "app", \
