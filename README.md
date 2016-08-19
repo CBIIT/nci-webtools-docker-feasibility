@@ -26,14 +26,22 @@ We are also investigating best practices for deploying the following open-source
 ####Deploying Applications
 The images generated from these dockerfiles only contain the dependencies required to run the application - this approach allows for application code to be mounted within a container at runtime, eliminating the need to rebuild the image on every change.
 
-Run the build.sh script provided to build these images against the default namespace - you can also specify the namespace as an argument (eg: sh build.sh project_namespace).
+The [cbiitss repository](https://hub.docker.com/u/cbiitss/) provides application-specific images and instructions for deploying each application. 
 
-| Default image         | File                        | Description                                          | 
-| --------------------- | --------------------------- | ---------------------------------------------------- |
-| cbiitss/python_web    | python_web.dockerfile       | Contains python web application dependencies         |
-| cbiitss/r_web         | r_web.dockerfile            | Contains python/R web application dependencies       |
-| cbiitss/python_deploy | python_deploy.dockerfile    | Deploys python web applications from source files    |
-| cbiitss/r_deploy      | r_deploy.dockerfile         | Deploys python/R web applications from source files  |
+#####Base Images
+
+| Default image         | File                                 | Description                                          | 
+| --------------------- | ------------------------------------ | ---------------------------------------------------- |
+| cbiitss/python27:c6   | [python-base.c6.dockerfile][1]       | CentOS 6 / Python 2.7.12                             |
+| cbiitss/r_base:c6     | [r-base.c6.dockerfile][3]            | CentOS 6 / Python 2.7.12 / R 3.3                     |
+| cbiitss/python27:c7   | [python-base.c7.dockerfile][2]       | CentOS 7 / Python 2.7.5 (system default)             |
+| cbiitss/r_base:c7     | [r-base.c7.dockerfile][4]            | CentOS 7 / Python 2.7.5 / R 3.3                      |
+
+[1]: applications/base/python-base.c6.dockerfile
+[2]: applications/base/python-base.c7.dockerfile
+[3]: applications/base/r-base.c6.dockerfile
+[4]: applications/base/r-base.c7.dockerfile
+
 
 To start an application, clone the application source and mount it within the container in the docker run command. This is an example for the [Age Period Cohort Tool](https://github.com/CBIIT/nci-webtools-dceg-age-period-cohort).
 
@@ -48,7 +56,7 @@ cp -r /tmp/age-period-cohort/apc/* /local/apc/app/
 # Since the application also requires resources found in a different repository,
 # we should should clone it and copy its contents to the deployment directory
 git clone https://github.com/CBIIT/nci-analysis-tools-web-presence.git /tmp/web-presence
-cp -r /tmp/web-presence/common/ /local/apc/
+cp -r /tmp/web-presence/common/ /local/apc/app/
 
 # Start the application
 docker run \
@@ -57,8 +65,8 @@ docker run \
   --publish 8000:8000 \
   --user `id -u`:`id -g` \
   --volume /etc/localtime:/etc/localtime:ro \
-  --volume /local/apc:/deploy/app \
-  --volume /local/logs:/deploy/logs \
+  --volume /local/apc/app/:/deploy/app \
+  --volume /local/apc/logs/:/deploy/logs \
   cbiitss/apc:c7
 
 # View the running container
