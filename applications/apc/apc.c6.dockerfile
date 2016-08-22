@@ -42,9 +42,19 @@ CMD ["start-server", "app/apc.wsgi", \
      "--document-root", "app", \
      "--working-directory", "app", \
      "--directory-index", "index.html", \
+     "--processes", "2", \
+     "--threads", "1", \
+     "--initial-workers", "1", \
+     "--socket-timeout", "300", \
+     "--queue-timeout", "300", \
+     "--shutdown-timeout", "300", \
+     "--eviction-timeout", "300" \
+     "--connect-timeout", "300" \
      "--log-directory", "logs", \
+     "--rotate-logs", \
      "--access-log", \
      "--access-log-name", "apc-access.log", \
      "--error-log-name", "apc.log", \
-     "--rotate-logs", \
      "--include-file", "/etc/httpd/conf.d/additional_configuration.conf"]
+
+
