@@ -25,6 +25,12 @@ RUN pip install --upgrade \
 
 RUN ln -s /usr/lib/jvm/jre/lib/amd64/server/libjvm.so /usr/lib64/libjvm.so
 
+RUN echo -e '                                            \n\
+<FilesMatch "\.(?i:conf|db|ini|py|pyc|wsgi|xml|r|md)$">  \n\
+  Require all denied                                     \n\
+</FilesMatch>                                            \n\
+' >> /etc/httpd/conf.d/additional_configuration.conf
+
 RUN mkdir -p /deploy
 
 WORKDIR /deploy
@@ -32,7 +38,6 @@ WORKDIR /deploy
 ENTRYPOINT ["mod_wsgi-express"]
 CMD ["start-server", "app/apc.wsgi", \
      "--port", "8000", \
-     "--server-root", "wsgi", \
      "--document-root", "app", \
      "--working-directory", "app", \
      "--directory-index", "index.html", \
@@ -40,4 +45,5 @@ CMD ["start-server", "app/apc.wsgi", \
      "--access-log", \
      "--access-log-name", "apc-access.log", \
      "--error-log-name", "apc.log", \
-     "--rotate-logs"]
+     "--rotate-logs", \
+     "--include-file", "/etc/httpd/conf.d/additional_configuration.conf"]
