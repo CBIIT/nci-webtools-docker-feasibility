@@ -1,6 +1,12 @@
-# cbiitss/biomarkertools:c7
-
 FROM cbiitss/r_base:c7
+
+LABEL \
+  BASE_OS="CentOS 7" \
+  DEFAULT_IMAGE="cbiitss/biomarkertools" \
+  DEFAULT_TAG="centos7" \
+  DESCRIPTION="Deployment environment for Biomarker Tools Suite (based on CentOS 7)" \
+  VERSION="1.0" \
+  UID="BIOMARKERTOOLS_1.0_C7"
 
 RUN yum -y install epel-release \
  && yum -y upgrade \
@@ -9,11 +15,27 @@ RUN yum -y install epel-release \
     readline-devel \
  && yum clean all
 
-RUN pip install --upgrade pip flask rpy2 mod_wsgi pandas numpy
+RUN pip install --upgrade \
+    flask \
+    mod_wsgi \
+    numpy \
+    pandas \
+    pip \
+    rpy2
 
-RUN R -e "install.packages(c('RJSONIO', 'stringr', 'pROC', 'xlsx'))"
+RUN R -e "install.packages(c( \
+    'pROC', \
+    'RJSONIO', \
+    'stringr', \
+    'xlsx'))"
 
 RUN ln -s /usr/lib/jvm/jre/lib/amd64/server/libjvm.so /usr/lib64/libjvm.so
+
+RUN echo -e '                                            \n\
+<FilesMatch "\.(?i:conf|db|ini|py|pyc|wsgi|xml|r|md)$">  \n\
+  Require all denied                                     \n\
+</FilesMatch>                                            \n\
+' >> /etc/httpd/conf.d/additional_configuration.conf
 
 RUN mkdir -p /deploy
 
@@ -21,15 +43,13 @@ WORKDIR /deploy
 
 ENTRYPOINT ["mod_wsgi-express"]
 CMD ["start-server", "app/biomarkerTools.wsgi", \
-  "--port", "8000", \
-  "--user", "apache", \
-  "--group", "apache", \
-  "--server-root", "wsgi", \
-  "--document-root", "app", \
-  "--working-directory", "app", \
-  "--directory-index", "index.html", \
-  "--log-directory", "logs", \
-  "--access-log", \
-  "--access-log-name", "biomarkerTools-access.log", \
-  "--error-log-name", "biomarkerTools.log", \
-  "--rotate-logs"]
+     "--port", "8000", \
+     "--document-root", "app", \
+     "--working-directory", "app", \
+     "--directory-index", "index.html", \
+     "--log-directory", "logs", \
+     "--access-log", \
+     "--access-log-name", "biomarkerTools-access.log", \
+     "--error-log-name", "biomarkerTools.log", \
+     "--rotate-logs", \
+     "--include-file", "/etc/httpd/conf.d/additional_configuration.conf"]
