@@ -1,11 +1,12 @@
-FROM cbiitss/r_base:c6
+FROM cbiitss/r_base:c7
 
 LABEL \
-  BASE_OS="CentOS 6.8" \
-  DEFAULT_IMAGE="cbiitss/apc:c6" \
-  DESCRIPTION="Deployment environment for Age Period Cohort Tool (based on CentOS 6.8)" \
+  BASE_OS="CentOS 7" \
+  DEFAULT_IMAGE="cbiitss/apc" \
+  DEFAULT_TAG="centos7" \
+  DESCRIPTION="Deployment environment for Age Period Cohort Tool (based on CentOS 7)" \
   VERSION="1.1" \
-  UID="APC_1.1_C6"
+  UID="APC_1.1_C7"
 
 RUN yum -y install epel-release \
  && yum -y upgrade \
