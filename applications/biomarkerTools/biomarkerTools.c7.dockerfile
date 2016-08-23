@@ -47,9 +47,17 @@ CMD ["start-server", "app/biomarkerTools.wsgi", \
      "--document-root", "app", \
      "--working-directory", "app", \
      "--directory-index", "index.html", \
+     "--processes", "2", \
+     "--threads", "1", \
+     "--initial-workers", "1", \
+     "--socket-timeout", "300", \
+     "--queue-timeout", "300", \
+     "--shutdown-timeout", "300", \
+     "--graceful-timeout", "300" \
+     "--connect-timeout", "300" \
      "--log-directory", "logs", \
+     "--rotate-logs", \
      "--access-log", \
      "--access-log-name", "biomarkerTools-access.log", \
      "--error-log-name", "biomarkerTools.log", \
-     "--rotate-logs", \
      "--include-file", "/etc/httpd/conf.d/additional_configuration.conf"]
