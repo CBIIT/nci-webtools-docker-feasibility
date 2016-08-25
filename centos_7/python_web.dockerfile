@@ -10,12 +10,13 @@ RUN yum -y upgrade \
     httpd \
     httpd-devel \
     lapack-devel \
+    libffi-devel \
     libxml2-devel \
     libxslt-devel \
     mongodb \
     openssl-devel \
     python \
-    python-devel
+    python-devel \
     python-pip \
     readline-devel \
     samtools \
