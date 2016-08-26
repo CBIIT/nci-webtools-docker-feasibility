@@ -30,6 +30,9 @@ RUN R -e "devtools::install_version('jsonlite',  version = '0.9.22',  repos = 'h
 
 RUN adduser -u 4004 ncianalysis
 
+RUN mkdir -p /usr/share/doc/R-3.3.1/html \
+ && touch /usr/share/doc/R-3.3.1/html/R.css
+
 RUN mkdir -p /deploy \
  && chown -R ncianalysis:ncianalysis /deploy
 

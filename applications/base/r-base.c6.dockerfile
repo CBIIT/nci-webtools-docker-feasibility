@@ -10,3 +10,5 @@ RUN yum -y install epel-release \
  && yum clean all
 
 RUN echo 'local({r <- getOption("repos"); r["CRAN"] <- "http://cran.cnr.berkeley.edu/"; options(repos = r)})' >> /usr/lib64/R/library/base/R/Rprofile
+
+RUN mkdir /usr/share/doc/R-3.3.0/html
