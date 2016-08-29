@@ -148,6 +148,6 @@ RUN yum -y install \
 ENV LD_LIBRARY_PATH /usr/local/lib
 
 RUN ln -s /usr/local/bin/python2.7 /usr/local/bin/python \
- && cd /tmp && curl https://bootstrap.pypa.io/ez_setup.py | python \
+ && cd /tmp && curl https://bootstrap.pypa.io/ez_setup.py | python - --insecure \
  && cd /tmp && curl https://bootstrap.pypa.io/get-pip.py | python
 
