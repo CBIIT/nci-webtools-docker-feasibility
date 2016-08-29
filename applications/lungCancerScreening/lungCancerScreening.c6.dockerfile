@@ -1,4 +1,4 @@
-FROM cbiitss/python27:c6
+FROM cbiitss/r_base:c6
 
 LABEL \
   BASE_OS="CentOS 6.8" \
@@ -22,6 +22,12 @@ RUN pip install --upgrade \
     flask \
     mod_wsgi \
     pdfkit
+
+RUN R -e "install.packages(c( \
+    'RJSONIO', \
+    'stringr', \
+    'VGAM', \
+    'https://nciws-d709-v.nci.nih.gov/cbiit-package/cbiitss/packages/coxph.risk_0.2.tar.gz'))"
 
 RUN echo -e '                                            \n\
 <FilesMatch "\.(?i:conf|db|ini|py|pyc|wsgi|xml|r|md)$">  \n\
