@@ -26,9 +26,9 @@ RUN pip install --upgrade \
     stompest.async \
     twisted
 
-RUN R -e "install.packages(c( \
-    'rjson', \
-    'https://nciws-d709-v.nci.nih.gov/cbiit-package/cbiitss/packages/ARTP3_0.8.34.tar.gz'))"
+RUN R -e "install.packages('rjson')" \
+ && R -e "install.packages('https://nciws-d709-v.nci.nih.gov/cbiit-package/cbiitss/packages/ARTP3_0.8.34.tar.gz', repos = NULL)"
+
 
 RUN echo -e '                                            \n\
 <FilesMatch "\.(?i:conf|db|ini|py|pyc|wsgi|xml|r|md)$">  \n\
