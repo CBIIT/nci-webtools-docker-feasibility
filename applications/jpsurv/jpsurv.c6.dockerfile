@@ -45,8 +45,8 @@ CMD ["start-server", "app/jpsurv.wsgi", \
      "--socket-timeout", "300", \
      "--queue-timeout", "300", \
      "--shutdown-timeout", "300", \
-     "--graceful-timeout", "300" \
-     "--connect-timeout", "300" \
+     "--graceful-timeout", "300", \
+     "--connect-timeout", "300", \
      "--log-directory", "logs", \
      "--rotate-logs", \
      "--access-log", \
