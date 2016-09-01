@@ -64,7 +64,7 @@ The [cbiitss repository](https://hub.docker.com/u/cbiitss/) provides application
 [4]: https://hub.docker.com/r/cbiitss/cancerterms/
 [5]: https://hub.docker.com/r/cbiitss/comets/
 [6]: https://hub.docker.com/r/cbiitss/econsent/
-[7: https://hub.docker.com/r/cbiitss/jpsurv/
+[7]: https://hub.docker.com/r/cbiitss/jpsurv/
 [8]: https://hub.docker.com/r/cbiitss/ldlink/
 [9]: https://hub.docker.com/r/cbiitss/lungcancerscreening/
 [10]: https://hub.docker.com/r/cbiitss/ncidose/
@@ -80,7 +80,7 @@ The [cbiitss repository](https://hub.docker.com/u/cbiitss/) provides application
 [19]: applications/base/LDlink/LDlink.c6.dockerfile
 [20]: applications/base/lungCancerScreening/lungCancerScreening.c6.dockerfile
 [21]: applications/base/NCIDose/NCIDose.c6.dockerfile
-[21]: applications/base/pathway/pathway.c6.dockerfile
+[22]: applications/base/pathway/pathway.c6.dockerfile
 
 
 #####Application Images (CentOS 7)
@@ -105,7 +105,7 @@ The [cbiitss repository](https://hub.docker.com/u/cbiitss/) provides application
 [4]: https://hub.docker.com/r/cbiitss/cancerterms/
 [5]: https://hub.docker.com/r/cbiitss/comets/
 [6]: https://hub.docker.com/r/cbiitss/econsent/
-[7: https://hub.docker.com/r/cbiitss/jpsurv/
+[7]: https://hub.docker.com/r/cbiitss/jpsurv/
 [8]: https://hub.docker.com/r/cbiitss/ldlink/
 [9]: https://hub.docker.com/r/cbiitss/lungcancerscreening/
 [10]: https://hub.docker.com/r/cbiitss/ncidose/
@@ -121,7 +121,7 @@ The [cbiitss repository](https://hub.docker.com/u/cbiitss/) provides application
 [19]: applications/base/LDlink/LDlink.c7.dockerfile
 [20]: applications/base/lungCancerScreening/lungCancerScreening.c7.dockerfile
 [21]: applications/base/NCIDose/NCIDose.c7.dockerfile
-[21]: applications/base/pathway/pathway.c7.dockerfile
+[22]: applications/base/pathway/pathway.c7.dockerfile
 
 
 To start an application, clone the application source and mount it within the container in the docker run command. This is an example for the [Age Period Cohort Tool](https://github.com/CBIIT/nci-webtools-dceg-age-period-cohort).
