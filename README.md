@@ -87,17 +87,17 @@ The [cbiitss repository](https://hub.docker.com/u/cbiitss/) provides application
 
 | Image Name                          | File                                    | Description                                      |
 | ----------------------------------- | --------------------------------------- | ------------------------------------------------ |
-| [cbiitss/absoluterisk:c7][1]        | [absoluteRisk.c7.dockerfile][12]        | CentOS 6 / Absolute Risk Calculator              |
-| [cbiitss/apc:c7][2]                 | [apc.c7.dockerfile][13]                 | CentOS 6 / Age Period Cohort Tool                |
-| [cbiitss/biomarkertools:c7][3]      | [biomarkerTools.c7.dockerfile][14]      | CentOS 6 / Biomarker Tools Suite                 |
-| [cbiitss/cancerterms:c7][4]         | [CancerTerms.c7.dockerfile][15]         | CentOS 6 / Cancer Terms API                      |
-| [cbiitss/comets:c7][5]              | [comets.c7.dockerfile][16]              | CentOS 6 / COMETS                                |
-| [cbiitss/econsent:c7][6]            | [econsent.c7.dockerfile][17]            | CentOS 6 / eConsent                              |
-| [cbiitss/jpsurv:c7][7]              | [jpsurv.c7.dockerfile][18]              | CentOS 6 / jpsurv                                |
-| [cbiitss/ldlink:c7][8]              | [LDlink.c7.dockerfile][19]              | CentOS 6 / LDlink                                |
-| [cbiitss/lungcancerscreening:c7][9] | [lungCancerScreening.c7.dockerfile][20] | CentOS 6 / Lung Cancer Screening Tool            |
-| [cbiitss/ncidose:c7][10]            | [NCIDose.c7.dockerfile][21]             | CentOS 6 / NCI Dose                              |
-| [cbiitss/pathway:c7][11]            | [pathway.c7.dockerfile][22]             | CentOS 6 / Pathway Analysis Tool                 |
+| [cbiitss/absoluterisk:c7][1]        | [absoluteRisk.c7.dockerfile][12]        | CentOS 7 / Absolute Risk Calculator              |
+| [cbiitss/apc:c7][2]                 | [apc.c7.dockerfile][13]                 | CentOS 7 / Age Period Cohort Tool                |
+| [cbiitss/biomarkertools:c7][3]      | [biomarkerTools.c7.dockerfile][14]      | CentOS 7 / Biomarker Tools Suite                 |
+| [cbiitss/cancerterms:c7][4]         | [CancerTerms.c7.dockerfile][15]         | CentOS 7 / Cancer Terms API                      |
+| [cbiitss/comets:c7][5]              | [comets.c7.dockerfile][16]              | CentOS 7 / COMETS                                |
+| [cbiitss/econsent:c7][6]            | [econsent.c7.dockerfile][17]            | CentOS 7 / eConsent                              |
+| [cbiitss/jpsurv:c7][7]              | [jpsurv.c7.dockerfile][18]              | CentOS 7 / jpsurv                                |
+| [cbiitss/ldlink:c7][8]              | [LDlink.c7.dockerfile][19]              | CentOS 7 / LDlink                                |
+| [cbiitss/lungcancerscreening:c7][9] | [lungCancerScreening.c7.dockerfile][20] | CentOS 7 / Lung Cancer Screening Tool            |
+| [cbiitss/ncidose:c7][10]            | [NCIDose.c7.dockerfile][21]             | CentOS 7 / NCI Dose                              |
+| [cbiitss/pathway:c7][11]            | [pathway.c7.dockerfile][22]             | CentOS 7 / Pathway Analysis Tool                 |
 
 [1]: https://hub.docker.com/r/cbiitss/absoluterisk/
 [2]: https://hub.docker.com/r/cbiitss/apc/
