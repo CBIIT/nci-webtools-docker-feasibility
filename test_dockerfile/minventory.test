@@ -1,0 +1,15 @@
+[testservers]
+172.19.5.11
+[testservers:vars]
+ansible_ssh_private_key_file=~/.ssh/ncimaint.pem 
+ansible_ssh_user=ncimaint 
+ansible_ssh_common_args='-o ProxyCommand="ssh -i ~/.ssh/ncimaint.pem -o StrictHostKeyChecking=no ncimaint@52.87.203.137 nc %h %p"' 
+host_key_checking=false
+
+[comets]
+172.30.0.34
+[comets:vars]
+ansible_ssh_private_key_file=~/.ssh/sskey1.pem
+ansible_ssh_user=centos
+ansible_ssh_common_args='-o ProxyCommand="ssh -i ~/.ssh/sskey1.pem -o StrictHostKeyChecking=no centos@174.129.66.127 nc %h %p"'
+host_key_checking=false

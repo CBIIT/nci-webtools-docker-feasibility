@@ -1,0 +1,35 @@
+- hosts: 172.30.0.34
+  
+  remote_user: centos
+  become: yes
+  become_user: root
+
+  vars:
+    list_of_packages:
+      - cbiit-openssl1.0.1-t-2.el7.x86_64.rpm
+      - cbiit-expat2-1.0-2.el7.x86_64.rpm
+      - cbiit-openldap2.4-44-2.el7.x86_64.rpm
+      - cbiit-pcre8-38-1.el7.x86_64.rpm
+      - cbiit-apr1.5-2-2.el7.x86_64.rpm
+      - cbiit-aprutil1.5-4-2.el7.x86_64.rpm
+      - cbiit-apache2.4-23-1.el7.x86_64.rpm
+  tasks:
+  - name: Copy rpm files to server
+    copy:
+          src: /admfs/packages/7/{{ item }}
+          dest: /tmp
+    with_items: '{{list_of_packages}}'
+
+  - name: Install packages
+    yum: name="/tmp/{{ item }}"
+        state=present
+    with_items: '{{list_of_packages}}'
+
+  - name: command install packages
+    command: /bin/yum localinstall -y /tmp/cbiit-apache2.4-23-1.el7.x86_64.rpm 
+    register: catme
+  - debug: var=catme.stdout_lines
+
+
+  - name: start apache service
+    service: name=apache state=started 
