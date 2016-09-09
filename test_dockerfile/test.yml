@@ -1,0 +1,10 @@
+- hosts: 172.19.5.11
+  
+  remote_user: centos
+  become: yes
+  become_user: root
+
+  tasks:
+    - name: install nginx
+      yum: name=nginx state=present
+
