@@ -1,4 +1,4 @@
-- hosts: 172.19.5.11
+- hosts: "{{ variable_host | default('172.19.5.12') }}"
   
   remote_user: centos
   become: yes
@@ -8,3 +8,5 @@
     - name: install nginx
       yum: name=nginx state=present
 
+    - name: test command
+      command: hostname
