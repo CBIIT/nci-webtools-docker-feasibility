@@ -7,7 +7,7 @@ ansible_ssh_common_args='-o ProxyCommand="ssh -i ~/.ssh/ncimaint.pem -o StrictHo
 host_key_checking=false
 
 [comets]
-172.30.0.34
+172.30.0.[1:255]
 [comets:vars]
 ansible_ssh_private_key_file=~/.ssh/sskey1.pem
 ansible_ssh_user=centos
