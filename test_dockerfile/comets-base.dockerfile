@@ -16,6 +16,9 @@ RUN yum -y upgrade \
 
 RUN pip install --upgrade pip rpy2 mod_wsgi flask
 
+RUN mkdir -p /usr/share/doc/R-3.3.1/html \
+ && touch /usr/share/doc/R-3.3.1/html/R.css
+
 RUN R -e "install.packages(c('devtools', 'roxygen2'), repos = 'http://cran.rstudio.com')"
 
 RUN R -e "devtools::install_version('jsonlite',  version = '0.9.22',  repos = 'http://cran.rstudio.com'); \
@@ -26,12 +29,12 @@ RUN R -e "devtools::install_version('jsonlite',  version = '0.9.22',  repos = 'h
           devtools::install_version('stringr',   version = '0.6',     repos = 'http://cran.rstudio.com'); \
           devtools::install_version('tidyr',     version = '0.5.0',   repos = 'http://cran.rstudio.com'); \
           devtools::install_version('plotly',    version = '3.4.13',  repos = 'http://cran.rstudio.com'); \
+          devtools::install_version('xlsx',      version = '0.5.7',   repos = 'http://cran.rstudio.com'); \
           devtools::install_version('d3heatmap', version = '0.6.1.1', repos = 'http://cran.rstudio.com'); "
 
-RUN adduser -u 4004 ncianalysis
+RUN ln -s /usr/lib/jvm/jre/lib/amd64/server/libjvm.so /usr/lib64/libjvm.so
 
-RUN mkdir -p /usr/share/doc/R-3.3.1/html \
- && touch /usr/share/doc/R-3.3.1/html/R.css
+RUN adduser -u 4004 ncianalysis
 
 RUN mkdir -p /deploy \
  && chown -R ncianalysis:ncianalysis /deploy
