@@ -1,0 +1,32 @@
+[testservers]
+172.19.5.11
+172.19.5.12
+[testservers:vars]
+ansible_ssh_private_key_file=~/.ssh/ncimaint.pem
+ansible_ssh_user=ncimaint
+ansible_ssh_common_args='-o ProxyCommand="ssh -i ~/.ssh/ncimaint.pem -o StrictHostKeyChecking=no ncimaint@"{{ proxyhost }}" nc %h %p"'
+host_key_checking=false
+
+[devservers]
+172.19.3.101
+172.19.3.102
+172.19.5.201
+172.19.5.202
+172.19.5.203
+[devservers:vars]
+ansible_ssh_private_key_file=~/.ssh/ncimaint.pem
+ansible_ssh_user=ncimaint
+ansible_ssh_common_args='-o StrictHostKeyChecking=no -o ProxyCommand="ssh -i ~/.ssh/ncimaint.pem -o StrictHostKeyChecking=no ncimaint@"{{ proxyhost }}" nc %h %p"'
+host_key_checking=false
+
+[stageservers]
+172.18.3.101
+172.18.3.102
+172.18.5.201
+172.18.5.202
+172.18.5.203
+[stageservers:vars]
+ansible_ssh_private_key_file=~/.ssh/ncimaint.pem
+ansible_ssh_user=ncimaint
+ansible_ssh_common_args='-o StrictHostKeyChecking=no -o ProxyCommand="ssh -i ~/.ssh/ncimaint.pem -o StrictHostKeyChecking=no ncimaint@"{{ proxyhost }}" nc %h %p"'
+host_key_checking=false
