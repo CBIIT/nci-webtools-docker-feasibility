@@ -52,11 +52,11 @@ CMD ["start-server", "app/deploy.wsgi", \
   "--working-directory", "app", \
   "--directory-index", "index.html", \
   "--log-directory", "logs", \
-  "--socket-timeout", "600", \
-  "--queue-timeout", "600", \
-  "--shutdown-timeout", "600", \
-  "--graceful-timeout", "600", \
-  "--connect-timeout", "600", \
-  "--request-timeout", "600", \
+  "--socket-timeout", "900", \
+  "--queue-timeout", "900", \
+  "--shutdown-timeout", "900", \
+  "--graceful-timeout", "900", \
+  "--connect-timeout", "900", \
+  "--request-timeout", "900", \
   "--reload-on-changes", \
   "--rotate-logs"]
