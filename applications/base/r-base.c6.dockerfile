@@ -17,4 +17,5 @@ RUN yum -y install epel-release \
 
 RUN echo 'local({r <- getOption("repos"); r["CRAN"] <- "http://cran.rstudio.com/"; options(repos = r)})' >> /usr/lib64/R/library/base/R/Rprofile
 
-RUN mkdir /usr/share/doc/R-3.3.1/html
+RUN mkdir -p /usr/share/doc/R-3.3.1/html \
+ && touch /usr/share/doc/R-3.3.1/html/R.css
