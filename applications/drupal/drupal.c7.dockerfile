@@ -34,16 +34,14 @@ RUN { \
     echo -e "\tSetHandler application/x-httpd-php"; \
     echo -e "</FilesMatch>"; \
     echo -e ; \
+    echo -e "AccessFileName .htaccess"; \
     echo -e "DirectoryIndex disabled"; \
     echo -e "DirectoryIndex index.php index.html"; \
     echo -e ; \
-
     echo -e "<Directory /var/www/html/>"; \
     echo -e "\tOptions -Indexes"; \
     echo -e "\tAllowOverride All"; \
     echo -e "</Directory>"; \
-
-    echo -e "AccessFileName .htaccess"; \
 } | tee "/etc/httpd/conf.d/docker-php.conf"
 
 RUN { \
