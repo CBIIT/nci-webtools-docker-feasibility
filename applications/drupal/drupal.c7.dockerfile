@@ -4,7 +4,7 @@ LABEL \
     BASE_OS="CentOS 7" \
     DEFAULT_IMAGE="cbiitss/drupal" \
     DEFAULT_TAG="8.2" \
-    DESCRIPTION="CentOS 7 / Httpd 2.4.23 / PHP 7.0.11 / Drupal 8.2.0" \
+    DESCRIPTION="CentOS 7 / httpd 2.4.23 / php 7.0.11 / drupal 8.2.0" \
     VERSION="1.0" \
     UID="CBIITSS_DRUPAL_8.2"
 
@@ -30,27 +30,27 @@ RUN yum -y install https://centos7.iuscommunity.org/ius-release.rpm \
  && yum clean all
 
 RUN { \
-    echo -e "<FilesMatch \.php$>"; \
-    echo -e "\tSetHandler application/x-httpd-php"; \
-    echo -e "</FilesMatch>"; \
-    echo -e ; \
-    echo -e "AccessFileName .htaccess"; \
-    echo -e "DirectoryIndex disabled"; \
-    echo -e "DirectoryIndex index.php index.html"; \
-    echo -e ; \
-    echo -e "<Directory /var/www/html/>"; \
-    echo -e "\tOptions -Indexes"; \
-    echo -e "\tAllowOverride All"; \
-    echo -e "</Directory>"; \
+    echo -e "<FilesMatch \.php$>"                  ; \
+    echo -e "\tSetHandler application/x-httpd-php" ; \
+    echo -e "</FilesMatch>"                        ; \
+    echo -e                                        ; \
+    echo -e "AccessFileName .htaccess"             ; \
+    echo -e "DirectoryIndex disabled"              ; \
+    echo -e "DirectoryIndex index.php index.html"  ; \
+    echo -e                                        ; \
+    echo -e "<Directory /var/www/html/>"           ; \
+    echo -e "\tOptions -Indexes"                   ; \
+    echo -e "\tAllowOverride All"                  ; \
+    echo -e "</Directory>"                         ; \
 } | tee "/etc/httpd/conf.d/docker-php.conf"
 
 RUN { \
-    echo -e "opcache.memory_consumption=128"; \
-    echo -e "opcache.interned_strings_buffer=8"; \
-    echo -e "opcache.max_accelerated_files=4000"; \
-    echo -e "opcache.revalidate_freq=60"; \
-    echo -e "opcache.fast_shutdown=1"; \
-    echo -e "opcache.enable_cli=1"; \
+    echo -e "opcache.memory_consumption=128"      ; \
+    echo -e "opcache.interned_strings_buffer=8"   ; \
+    echo -e "opcache.max_accelerated_files=4000"  ; \
+    echo -e "opcache.revalidate_freq=60"          ; \
+    echo -e "opcache.fast_shutdown=1"             ; \
+    echo -e "opcache.enable_cli=1"                ; \
 } | tee "/etc/php.d/opcache-recommended.ini"
 
 
@@ -65,6 +65,9 @@ RUN curl -fSL "https://ftp.drupal.org/files/projects/drupal-${DRUPAL_VERSION}.ta
  && tar -xz --strip-components=1 -f drupal.tar.gz \
  && rm drupal.tar.gz \
  && chown -R apache:apache /var/www/html
+
+RUN curl https://s3.amazonaws.com/files.drush.org/drush.phar -o /usr/local/bin/drush \
+ && chmod +x /usr/local/bin/drush
 
 ENTRYPOINT ["/usr/sbin/httpd"]
 CMD ["-k", "start", "-DFOREGROUND"]
