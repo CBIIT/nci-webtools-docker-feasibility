@@ -57,7 +57,7 @@ RUN { \
 WORKDIR /var/www/html
 
 # https://www.drupal.org/node/3060/release
-RUN curl https://ftp.drupal.org/files/projects/drupal-8.2.0.tar.gz | tar -xz --strip-components=1 \
+RUN curl https://ftp.drupal.org/files/projects/drupal-8.2.1.tar.gz | tar -xz --strip-components=1 \
  && curl https://s3.amazonaws.com/files.drush.org/drush.phar -o /usr/local/bin/drush \
  && chown -R apache:apache /var/www/html \
  && chmod 755 /usr/local/bin/drush
