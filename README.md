@@ -20,8 +20,10 @@ The following tools are supported by this study:
 We are also investigating best practices for deploying the following open-source projects:
 - [ActiveMQ](https://github.com/apache/activemq)
 - [Apache HTTP Server](https://github.com/apache/httpd)
+- [Drupal](https://github.com/drupal/drupal)
 - [Jenkins](https://github.com/jenkinsci/jenkins)
 - [MongoDB](https://github.com/mongodb/mongo)
+- [MySQL](https://github.com/mysql/mysql-server)
 
 ####Deploying Applications
 The images generated from these dockerfiles only contain the dependencies required to run the application - this approach allows for application code to be mounted within a container at runtime, eliminating the need to rebuild the image on every change.
