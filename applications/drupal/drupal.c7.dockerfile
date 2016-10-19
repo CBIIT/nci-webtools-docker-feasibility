@@ -30,27 +30,34 @@ RUN yum -y install https://centos7.iuscommunity.org/ius-release.rpm \
  && yum clean all
 
 RUN { \
-    echo -e "<FilesMatch \.php$>"                  ; \
-    echo -e "\tSetHandler application/x-httpd-php" ; \
-    echo -e "</FilesMatch>"                        ; \
-    echo -e                                        ; \
-    echo -e "AccessFileName .htaccess"             ; \
-    echo -e "DirectoryIndex disabled"              ; \
-    echo -e "DirectoryIndex index.php index.html"  ; \
-    echo -e                                        ; \
-    echo -e "<Directory /var/www/html/>"           ; \
-    echo -e "\tOptions -Indexes"                   ; \
-    echo -e "\tAllowOverride All"                  ; \
-    echo -e "</Directory>"                         ; \
+    echo "ServerName localhost"                            ; \
+    echo "ServerSignature Off"                             ; \
+    echo "ServerTokens Prod"                               ; \
+    echo "TraceEnable Off"                                 ; \
+    echo "Header always append X-Frame-Options SAMEORIGIN" ; \
+    echo "Header set X-XSS-Protection \"1; mode=block\""   ; \
+    echo                                                   ; \
+    echo "AccessFileName .htaccess"                        ; \
+    echo "DirectoryIndex disabled"                         ; \
+    echo "DirectoryIndex index.php index.html"             ; \
+    echo                                                   ; \
+    echo "<FilesMatch \.php$>"                             ; \
+    echo "    SetHandler application/x-httpd-php"          ; \
+    echo "</FilesMatch>"                                   ; \
+    echo                                                   ; \
+    echo "<Directory /var/www/html/>"                      ; \
+    echo "    Options -Indexes"                            ; \
+    echo "    AllowOverride All"                           ; \
+    echo "</Directory>"                                    ; \
 } | tee "/etc/httpd/conf.d/docker-php.conf"
 
 RUN { \
-    echo -e "opcache.memory_consumption=128"      ; \
-    echo -e "opcache.interned_strings_buffer=8"   ; \
-    echo -e "opcache.max_accelerated_files=4000"  ; \
-    echo -e "opcache.revalidate_freq=60"          ; \
-    echo -e "opcache.fast_shutdown=1"             ; \
-    echo -e "opcache.enable_cli=1"                ; \
+    echo "opcache.memory_consumption=128"     ; \
+    echo "opcache.interned_strings_buffer=8"  ; \
+    echo "opcache.max_accelerated_files=4000" ; \
+    echo "opcache.revalidate_freq=60"         ; \
+    echo "opcache.fast_shutdown=1"            ; \
+    echo "opcache.enable_cli=1"               ; \
 } | tee "/etc/php.d/opcache-recommended.ini"
 
 
