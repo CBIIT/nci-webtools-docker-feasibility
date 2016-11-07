@@ -56,4 +56,6 @@ CMD ["start-server", "app/deploy.wsgi", \
   "--connect-timeout", "900", \
   "--request-timeout", "900", \
   "--reload-on-changes", \
+  "--processes", "3", \
+  "--threads", "1", \
   "--rotate-logs"]
