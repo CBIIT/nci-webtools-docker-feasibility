@@ -13,7 +13,7 @@ RUN yum -y upgrade \
         readline-devel \
  && yum clean all
 
-RUN pip install --upgrade pip rpy2 mod_wsgi flask requests
+RUN pip install --upgrade pip rpy2 mod_wsgi flask requests pyyaml
 
 RUN R -e "install.packages(c('devtools', 'roxygen2')); \
           devtools::install_version('jsonlite',   version = '0.9.22'  ); \
