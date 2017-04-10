@@ -1,0 +1,38 @@
+version: '3'
+services:
+  comets:
+    image: cbiitss/comets:base0
+    volumes:
+      - ./app:/deploy/app
+      - ./logs:/deploy/logs
+    container_name: comets
+    depends_on:
+      - activemq
+    links:
+      - activemq
+    ports:
+      - '80:80'
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost']
+
+  processor:
+    image: cbiitss/comets:processor
+      volumes:
+        - ./app:/deploy/app
+        - ./logs:/deploy/logs
+      container_name: comets_processor
+      depends_on:
+        - activemq
+      links:
+        - activemq
+      ports:
+        - '1001:1001'
+
+  activemq:
+    image: webcenter/activemq:latest
+    container_name: activemq
+    expose:
+      - '61613'
+    ports:
+      - '8161:8161'
+      - '61613:61613'
