@@ -22,7 +22,7 @@ RUN R -e "install.packages(c('devtools', 'roxygen2'), INSTALL_opts = c('--no-htm
 
 RUN R -e "devtools::install_version('jsonlite',   version = '0.9.22'  ); \
           devtools::install_version('plyr',       version = '1.8.3'   ); \
-          devtools::install_version('dplyr',      version = '0.4.3'   ); \
+          devtools::install_version('dplyr',      version = '0.5.0'   ); \
           devtools::install_version('Hmisc',      version = '4.0-2'   ); \
           devtools::install_version('psych',      version = '1.6.4'   ); \
           devtools::install_version('readxl',     version = '0.1.0'   ); \
