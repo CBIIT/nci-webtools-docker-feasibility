@@ -1,0 +1,8 @@
+version: '3'
+services:
+  processor:
+    image: cbiitss/comets:processor
+      volumes:
+        - ./app:/deploy/app
+        - ./logs:/deploy/logs
+      container_name: comets_processor
