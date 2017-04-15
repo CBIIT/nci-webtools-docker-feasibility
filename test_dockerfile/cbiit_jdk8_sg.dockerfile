@@ -7,3 +7,5 @@ RUN yum -y upgrade \
  && yum clean all
 RUN rm -f /cbiit-${version}.x86_64.rpm
 
+ENV JAVA_HOME /usr/java8
+ENV PATH ${PATH}:${JAVA_HOME}/bin
