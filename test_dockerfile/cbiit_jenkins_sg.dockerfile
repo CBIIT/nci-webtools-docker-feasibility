@@ -75,3 +75,12 @@ COPY install-plugins.sh /usr/local/bin/install-plugins.sh
 COPY jenkins-plugins.txt /usr/share/jenkins/plugins.txt
 #RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/plugins.txt
 RUN /usr/local/bin/install-plugins.sh $(cat /usr/share/jenkins/plugins.txt | tr '\n' ' ')
+
+USER root
+
+RUN groupadd -g 993 docker \
+    && usermod -G docker ${user}
+
+RUN yum install -y docker-client
+
+USER ${user}
