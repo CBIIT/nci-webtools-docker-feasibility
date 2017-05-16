@@ -10,3 +10,4 @@ github-organization-folder:latest
 cloudbees-folder:latest
 ws-cleanup:latest
 mask-passwords
+parameterized-trigger 
