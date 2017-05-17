@@ -11,3 +11,4 @@ cloudbees-folder:latest
 ws-cleanup:latest
 mask-passwords
 parameterized-trigger 
+matrix-auth
