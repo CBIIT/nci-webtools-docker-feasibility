@@ -13,3 +13,10 @@ mask-passwords
 parameterized-trigger 
 matrix-auth
 email-ext 
+ws-cleanup
+nexus-artifact-uploader
+multiple-scms
+copyartifact
+dynamicparameter
+git-parameter
+mail-watcher-plugin
