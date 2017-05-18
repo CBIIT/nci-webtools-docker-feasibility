@@ -12,3 +12,4 @@ ws-cleanup:latest
 mask-passwords
 parameterized-trigger 
 matrix-auth
+email-ext 
