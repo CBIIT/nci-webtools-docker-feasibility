@@ -17,6 +17,10 @@ ws-cleanup
 nexus-artifact-uploader
 multiple-scms
 copyartifact
-dynamicparameter
 git-parameter
 mail-watcher-plugin
+purge-job-history
+nexus-artifact-uploader
+dynamic_extended_choice_parameter
+envinject 
+extended-read-permission
