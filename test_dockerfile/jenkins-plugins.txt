@@ -13,7 +13,6 @@ mask-passwords
 parameterized-trigger 
 matrix-auth
 email-ext 
-nexus-artifact-uploader
 multiple-scms
 copyartifact
 git-parameter
