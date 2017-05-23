@@ -1,13 +1,12 @@
-ant:latest
-git:latest
-docker-slaves:latest
+ant
+git
+docker-slaves
 ldap
 build-timeout
 credentials-binding
 ssh-slaves
 timestamper
-github-organization-folder:latest
-cloudbees-folder:latest
+cloudbees-folder
 ws-cleanup:latest
 mask-passwords
 parameterized-trigger 
