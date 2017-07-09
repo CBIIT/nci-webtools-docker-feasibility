@@ -1,0 +1,5 @@
+[cbiitrepo]
+name=test cbiit Repository
+baseurl=https://ncias-d1765-v.nci.nih.gov/7
+enabled=1
+gpgcheck=0
