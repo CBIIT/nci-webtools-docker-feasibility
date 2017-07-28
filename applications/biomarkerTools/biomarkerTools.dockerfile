@@ -31,8 +31,6 @@ RUN R -e "install.packages(c( \
 
 RUN export _JAVA_OPTIONS="-Xss2560k -Xmx2g"
 
-RUN export APP_NAME=biomarkerTools
-
 RUN echo -e '                                            \n\
 <FilesMatch "\.(?i:conf|db|ini|py|pyc|wsgi|xml|r|md)$">  \n\
   Require all denied                                     \n\
@@ -47,4 +45,4 @@ COPY "./entrypoint.sh" "/usr/bin/entrypoint.sh"
 RUN chmod 755 /usr/bin/entrypoint.sh \
  && ln -s /usr/bin/entrypoint.sh /entrypoint.sh
 
-ENTRYPOINT ["entrypoint.sh"]
+RUN ["entrypoint.sh", "biomarkerTools"]

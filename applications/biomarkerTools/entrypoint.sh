@@ -1,9 +1,13 @@
 #!/bin/bash
 
+APP_NAME=$1
+
 rm -rf /deploy/wsgi
 
 mod_wsgi-express start-server /deploy/app/$APP_NAME.wsgi \
   --port 8000 \
+  --user apache \
+  --group apache \
   --document-root /deploy/app \
   --working-directory /deploy/app \
   --directory-index index.html \
