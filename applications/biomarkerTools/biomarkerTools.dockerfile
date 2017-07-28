@@ -1,4 +1,4 @@
-FROM cbiit/r_base:c7
+FROM cbiit/r_base:latest
 
 LABEL \
   BASE_OS="CentOS 7" \
@@ -31,33 +31,22 @@ RUN R -e "install.packages(c( \
 
 RUN ln -s /usr/lib/jvm/jre/lib/amd64/server/libjvm.so /usr/lib64/libjvm.so
 
+RUN export _JAVA_OPTIONS="-Xss2560k -Xmx2g"
+
+RUN export APP_NAME=biomarkerTools
+
 RUN echo -e '                                            \n\
 <FilesMatch "\.(?i:conf|db|ini|py|pyc|wsgi|xml|r|md)$">  \n\
   Require all denied                                     \n\
 </FilesMatch>                                            \n\
 ' >> /etc/httpd/conf.d/additional_configuration.conf
 
-RUN mkdir -p /deploy
-
+RUN mkdir -p /deploy/app /deploy/logs 
 WORKDIR /deploy
 
-ENTRYPOINT ["mod_wsgi-express"]
-CMD ["start-server", "app/biomarkerTools.wsgi", \
-     "--port", "8000", \
-     "--document-root", "app", \
-     "--working-directory", "app", \
-     "--directory-index", "index.html", \
-     "--processes", "2", \
-     "--threads", "1", \
-     "--initial-workers", "1", \
-     "--socket-timeout", "300", \
-     "--queue-timeout", "300", \
-     "--shutdown-timeout", "300", \
-     "--graceful-timeout", "300", \
-     "--connect-timeout", "300", \
-     "--log-directory", "logs", \
-     "--rotate-logs", \
-     "--access-log", \
-     "--access-log-name", "biomarkerTools-access.log", \
-     "--error-log-name", "biomarkerTools.log", \
-     "--include-file", "/etc/httpd/conf.d/additional_configuration.conf"]
+COPY "./entrypoint.sh" "/usr/bin/entrypoint.sh"
+
+RUN chmod 755 /usr/bin/entrypoint.sh \
+ && ln -s /usr/bin/entrypoint.sh /entrypoint.sh
+
+ENTRYPOINT ["entrypoint.sh"]
