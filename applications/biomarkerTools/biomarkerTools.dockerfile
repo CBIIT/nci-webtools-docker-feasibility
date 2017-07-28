@@ -45,4 +45,4 @@ COPY "./entrypoint.sh" "/usr/bin/entrypoint.sh"
 RUN chmod 755 /usr/bin/entrypoint.sh \
  && ln -s /usr/bin/entrypoint.sh /entrypoint.sh
 
-RUN ["entrypoint.sh", "biomarkerTools"]
+CMD ["entrypoint.sh", "biomarkerTools"]

@@ -11,4 +11,4 @@ RUN export RELEASE="Biomarker_1.0.1_20170725" \
  && cp -r /tmp/common-repository/common /deploy/app \
  && rm -rf /tmp/repository /tmp/common-repository
 
-ENTRYPOINT ["entrypoint.sh", "biomarkerTools"]
+CMD ["entrypoint.sh", "biomarkerTools"]
