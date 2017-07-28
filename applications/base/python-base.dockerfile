@@ -9,7 +9,10 @@ LABEL \
     UID="PYTHON_2.7.5"
 
 ## Install Yum Overlay Plugin
-RUN export LANG="en_US.utf8" \
+RUN export LANG="en_US.UTF-8" \
+ && export language="en_US.UTF-8" \
+ && export LC_COLLATE="C" \
+ && export LC_CTYPE="en_US.UTF-8" \
  && yum -y install yum-plugin-ovl
 
 RUN yum -y update \
@@ -22,4 +25,4 @@ RUN yum -y update \
  && yum clean all \
  && pip install --upgrade pip
 
-CMD ["python"]
+CMD ["python"]locale
