@@ -19,7 +19,7 @@ RUN pip install --upgrade \
     flask \
     mod_wsgi \
     numpy \
-    pandas \
+    pandas=1.15 \
     pip \
     rpy2
 
