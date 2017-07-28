@@ -29,8 +29,6 @@ RUN R -e "install.packages(c( \
     'stringr', \
     'xlsx'))"
 
-RUN ln -s /usr/lib/jvm/jre/lib/amd64/server/libjvm.so /usr/lib64/libjvm.so
-
 RUN export _JAVA_OPTIONS="-Xss2560k -Xmx2g"
 
 RUN export APP_NAME=biomarkerTools
