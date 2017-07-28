@@ -8,6 +8,9 @@ LABEL \
     VERSION="1.0" \
     UID="PYTHON_2.7.5"
 
+## Install Yum Overlay Plugin
+RUN yum -y install yum-plugin-ovl
+
 RUN yum -y update \
  && yum -y install \
     epel-release \
