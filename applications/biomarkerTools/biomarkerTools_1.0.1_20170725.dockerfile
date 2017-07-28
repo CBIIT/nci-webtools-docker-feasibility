@@ -9,7 +9,8 @@ RUN git clone -b $RELEASE https://github.com/CBIIT/nci-webtools-dceg-sw-computat
  && git clone -b $RELEASE https://github.com/CBIIT/nci-analysis-tools-web-presence /tmp/common-repository \
  && mkdir -p /deploy/app \
  && cp -r /tmp/repository/biomarkerTools/* /deploy/app \
- && cp -r /tmp/common-repositry/common /deploy/app
+ && cp -r /tmp/common-repositry/common /deploy/app \
+ && rm -rf /tmp/repository /tmp/common-repository
 
 COPY "./entrypoint.sh" "/usr/bin/entrypoint.sh"
 
