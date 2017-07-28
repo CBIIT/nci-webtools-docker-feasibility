@@ -8,10 +8,9 @@ RUN echo "# override_install_langs=en_US.UTF-8" >> /etc/yum.conf \
  && /bin/date +%Y%m%d_%H%M > /etc/BUILDTIME
 
 ENV LANG=en_US
-RUN yum -y upgrade \
+RUN yum install -y yum-plugin-ovl && yum -y upgrade \
  && yum reinstall -y glibc-common \
  && yum reinstall -y glibc \
- && yum install -y yum-plugin-ovl \
  && yum clean all
 
 
