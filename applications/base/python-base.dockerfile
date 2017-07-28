@@ -17,3 +17,5 @@ RUN yum -y update \
     python-devel \
  && yum clean all \
  && pip install --upgrade pip
+
+CMD ["python"]

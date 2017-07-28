@@ -4,9 +4,9 @@ LABEL \
     BASE_OS="CentOS 7" \
     DEFAULT_IMAGE="cbiit/r-base" \
     DEFAULT_TAG="latest" \
-    DESCRIPTION="CentOS 7 / Python 2.7.5 / R 3.3.1" \
+    DESCRIPTION="CentOS 7 / Python 2.7.5 / R 3.4.0" \
     VERSION="1.0" \
-    UID="R_3.3.1"
+    UID="R_3.4.0"
 
 RUN yum -y update \
  && yum -y install \
@@ -17,12 +17,14 @@ RUN yum -y update \
  && yum clean all
 
 RUN { \
-    echo "local({" ;\
-    echo "    r <- getOption('repos')" ;\
-    echo "    r['CRAN'] <- 'http://cran.rstudio.com/'" ;\
-    echo "    options(repos = r)" ;\
-    echo "})" ;\
+    echo "local({"                                      ;\
+    echo "    r <- getOption('repos')"                  ;\
+    echo "    r['CRAN'] <- 'http://cran.rstudio.com/'"  ;\
+    echo "    options(repos = r)"                       ;\
+    echo "})"                                           ;\
 } | tee -a "/usr/lib64/R/library/base/R/Rprofile"
 
 RUN ln -s /usr/lib/jvm/jre/lib/amd64/server/libjvm.so /usr/lib64/libjvm.so \
- && install -Dv /dev/null /usr/share/doc/R-3.3.1/html/R.css
+ && install -Dv /dev/null /usr/share/doc/R-3.4.0/html/R.css
+
+CMD ["R"]
