@@ -1,6 +1,6 @@
 FROM cbiit/centos7:init
 
-RUN echo "override_install_langs=en_US.UTF-8" >> /etc/yum.conf \
+RUN echo "# override_install_langs=en_US.UTF-8" >> /etc/yum.conf \
  && echo "tsflags=nodocs" >> /etc/yum.conf \
 # && echo "LANG=\"en_US.UTF-8\"" > /etc/locale.conf \
 # && echo 'container' > /etc/yum/vars/infra \
@@ -11,6 +11,7 @@ ENV LANG=en_US
 RUN yum -y upgrade \
  && yum reinstall -y glibc-common \
  && yum reinstall -y glibc \
+ && yum install -y yum-plugin-ovl \
  && yum clean all
 
 
