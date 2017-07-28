@@ -25,4 +25,4 @@ RUN yum -y update \
  && yum clean all \
  && pip install --upgrade pip
 
-CMD ["python"]locale
+CMD ["python"]
