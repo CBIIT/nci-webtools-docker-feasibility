@@ -1,12 +1,12 @@
 FROM cbiit/biomarkertools:latest
 
 LABEL \
-  BASE_OS="CentOS 7" \
+  BASE_IMAGE="cbiit/centos7:base" \
   DEFAULT_IMAGE="cbiit/biomarkertools" \
   DEFAULT_TAG="1.0.2_20170728" \
-  DESCRIPTION="Deployment environment for Biomarker Tools Suite (based on CentOS 7)" \
-  VERSION="1.0" \
-  UID="BIOMARKERTOOLS_1.0_C7"
+  DESCRIPTION="Deployment environment for biomarker tools suite" \
+  VERSION="1.0.2_20170728" \
+  UID="BIOMARKERTOOLS_1.0.2_20170728"
 
 RUN yum install -y git \
  && yum clean all
