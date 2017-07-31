@@ -18,8 +18,6 @@ RUN yum -y install epel-release \
 RUN pip install --upgrade \
     flask \
     mod_wsgi \
-    numpy \
-    pandas==0.15.2 \
     pip \
     rpy2
 
