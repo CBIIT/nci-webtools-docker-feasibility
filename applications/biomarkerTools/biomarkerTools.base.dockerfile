@@ -3,7 +3,7 @@ FROM cbiit/r_base:latest
 LABEL \
   BASE_OS="CentOS 7" \
   DEFAULT_IMAGE="cbiit/biomarkertools" \
-  DEFAULT_TAG="centos7" \
+  DEFAULT_TAG="base" \
   DESCRIPTION="Deployment environment for Biomarker Tools Suite (based on CentOS 7)" \
   VERSION="1.0" \
   UID="BIOMARKERTOOLS_1.0_C7"
@@ -29,18 +29,15 @@ RUN R -e "install.packages(c( \
 
 RUN export _JAVA_OPTIONS="-Xss2560k -Xmx2g"
 
-RUN echo -e '                                            \n\
-<FilesMatch "\.(?i:conf|db|ini|py|pyc|wsgi|xml|r|md)$">  \n\
-  Require all denied                                     \n\
-</FilesMatch>                                            \n\
-' >> /etc/httpd/conf.d/additional_configuration.conf
-
-RUN mkdir -p /deploy/app /deploy/logs 
-WORKDIR /deploy
+COPY "./wsgi.conf" "/etc/httpd/conf.d/wsgi.conf"
 
 COPY "./entrypoint.sh" "/usr/bin/entrypoint.sh"
 
 RUN chmod 755 /usr/bin/entrypoint.sh \
  && ln -s /usr/bin/entrypoint.sh /entrypoint.sh
+
+RUN mkdir -p /deploy/app /deploy/logs 
+
+WORKDIR /deploy
 
 CMD ["entrypoint.sh", "biomarkerTools"]

@@ -3,7 +3,7 @@ FROM cbiit/biomarkertools:latest
 LABEL \
   BASE_OS="CentOS 7" \
   DEFAULT_IMAGE="cbiit/biomarkertools" \
-  DEFAULT_TAG="1.0.2_20170728" \
+  DEFAULT_TAG="latest" \
   DESCRIPTION="Deployment environment for Biomarker Tools Suite (based on CentOS 7)" \
   VERSION="1.0" \
   UID="BIOMARKERTOOLS_1.0_C7"
@@ -11,9 +11,8 @@ LABEL \
 RUN yum install -y git \
  && yum clean all
 
-RUN export RELEASE="Biomarker_1.0.2_20170728" \
- && git clone -b $RELEASE https://github.com/CBIIT/nci-webtools-dceg-sw-computational-tools /tmp/repository \
- && git clone -b $RELEASE https://github.com/CBIIT/nci-analysis-tools-web-presence /tmp/common-repository \
+RUN git clone https://github.com/CBIIT/nci-webtools-dceg-sw-computational-tools /tmp/repository \
+ && git clone https://github.com/CBIIT/nci-analysis-tools-web-presence /tmp/common-repository \
  && mkdir -p /deploy/app \
  && cp -r /tmp/repository/biomarkerTools/* /deploy/app \
  && cp -r /tmp/common-repository/common /deploy/app \
