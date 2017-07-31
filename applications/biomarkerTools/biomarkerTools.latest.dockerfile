@@ -11,8 +11,10 @@ LABEL \
 RUN yum install -y git \
  && yum clean all
 
-RUN git clone https://github.com/CBIIT/nci-webtools-dceg-sw-computational-tools /tmp/repository \
- && git clone https://github.com/CBIIT/nci-analysis-tools-web-presence /tmp/common-repository \
+RUN export REPOSITORY_URL="https://github.com/CBIIT/nci-webtools-dceg-sw-computational-tools" \
+ && export COMMON_REPOSITORY_URL="https://github.com/CBIIT/nci-analysis-tools-web-presence" \
+ && git clone $REPOSITORY_URL /tmp/repository \
+ && git clone $COMMON_REPOSITORY_URL /tmp/common-repository \
  && mkdir -p /deploy/app \
  && cp -r /tmp/repository/biomarkerTools/* /deploy/app \
  && cp -r /tmp/common-repository/common /deploy/app \
