@@ -1,102 +1,69 @@
 #!/bin/bash
 
-# Base
-docker build -f applications/base/python-base.c6.dockerfile -t cbiit/python27:c6 .
-docker build -f applications/base/python-base.c6.dockerfile -t cbiit/python27:centos6 .
-docker build -f applications/base/python-base.c7.dockerfile -t cbiit/python27:c7 .
-docker build -f applications/base/python-base.c7.dockerfile -t cbiit/python27:centos7 .
-docker build -f applications/base/python-base.c7.dockerfile -t cbiit/python27:latest .
-
-docker build -f applications/base/r-base.c6.dockerfile -t cbiit/r_base:c6 .
-docker build -f applications/base/r-base.c6.dockerfile -t cbiit/r_base:centos6 .
-docker build -f applications/base/r-base.c7.dockerfile -t cbiit/r_base:c7 .
-docker build -f applications/base/r-base.c7.dockerfile -t cbiit/r_base:centos7 .
-docker build -f applications/base/r-base.c7.dockerfile -t cbiit/r_base:latest .
-
+# Base Images
+pushd applications/base
+docker build -f python-base.dockerfile -t cbiit/python_base .
+docker build -f python-base.dockerfile -t cbiitss/python_base .
+docker build -f r-base.dockerfile -t cbiit/r_base .
+docker build -f r-base.dockerfile -t cbiitss/r_base .
+popd
 
 # Absolute Risk Calculator
-docker build -f applications/absoluteRisk/absoluteRisk.c6.dockerfile -t cbiit/absoluterisk:c6 .
-docker build -f applications/absoluteRisk/absoluteRisk.c6.dockerfile -t cbiit/absoluterisk:centos6 .
-docker build -f applications/absoluteRisk/absoluteRisk.c7.dockerfile -t cbiit/absoluterisk:c7 .
-docker build -f applications/absoluteRisk/absoluteRisk.c7.dockerfile -t cbiit/absoluterisk:centos7 .
-docker build -f applications/absoluteRisk/absoluteRisk.c7.dockerfile -t cbiit/absoluterisk:latest .
-
+pushd applications/absoluteRisk
+docker build -f absoluteRisk.dockerfile -t cbiit/absoluterisk .
+docker build -f absoluteRisk.dockerfile -t cbiitss/absoluterisk .
+popd
 
 # Age Period Cohort Tool
-docker build -f applications/apc/apc.c6.dockerfile -t cbiit/apc:c6 .
-docker build -f applications/apc/apc.c6.dockerfile -t cbiit/apc:centos6 .
-docker build -f applications/apc/apc.c7.dockerfile -t cbiit/apc:c7 .
-docker build -f applications/apc/apc.c7.dockerfile -t cbiit/apc:centos7 .
-docker build -f applications/apc/apc.c7.dockerfile -t cbiit/apc:latest .
+pushd applications/apc
+docker build -f apc.dockerfile -t cbiit/apc .
+docker build -f apc.dockerfile -t cbiitss/apc .
+popd
 
+# Biomarker Tools
+pushd applications/biomarkerTools
+docker build -f biomarkerTools.dockerfile -t cbiit/biomarkertools .
+docker build -f biomarkerTools.dockerfile -t cbiitss/biomarkertools .
+popd
 
-# Biomarker Tools Suite
-docker build -f applications/biomarkerTools/biomarkerTools.c6.dockerfile -t cbiit/biomarkertools:c6 .
-docker build -f applications/biomarkerTools/biomarkerTools.c6.dockerfile -t cbiit/biomarkertools:centos6 .
-docker build -f applications/biomarkerTools/biomarkerTools.c7.dockerfile -t cbiit/biomarkertools:c7 .
-docker build -f applications/biomarkerTools/biomarkerTools.c7.dockerfile -t cbiit/biomarkertools:centos7 .
-docker build -f applications/biomarkerTools/biomarkerTools.c7.dockerfile -t cbiit/biomarkertools:latest .
-
-
-# Cancer Terms API
-docker build -f applications/CancerTerms/CancerTerms.c6.dockerfile -t cbiit/cancerterms:c6 .
-docker build -f applications/CancerTerms/CancerTerms.c6.dockerfile -t cbiit/cancerterms:centos6 .
-docker build -f applications/CancerTerms/CancerTerms.c7.dockerfile -t cbiit/cancerterms:c7 .
-docker build -f applications/CancerTerms/CancerTerms.c7.dockerfile -t cbiit/cancerterms:centos7 .
-docker build -f applications/CancerTerms/CancerTerms.c7.dockerfile -t cbiit/cancerterms:latest .
-
+# Cancer Terms
+pushd applications/CancerTerms
+docker build -f CancerTerms.dockerfile -t cbiit/cancerterms .
+docker build -f CancerTerms.dockerfile -t cbiitss/cancerterms .
+popd
 
 # eConsent
-docker build -f applications/econsent/econsent.c6.dockerfile -t cbiit/econsent:c6 .
-docker build -f applications/econsent/econsent.c6.dockerfile -t cbiit/econsent:centos6 .
-docker build -f applications/econsent/econsent.c7.dockerfile -t cbiit/econsent:c7 .
-docker build -f applications/econsent/econsent.c7.dockerfile -t cbiit/econsent:centos7 .
-docker build -f applications/econsent/econsent.c7.dockerfile -t cbiit/econsent:latest .
-
-
+pushd applications/econsent
+docker build -f econsent.dockerfile -t cbiit/econsent .
+docker build -f econsent.dockerfile -t cbiitss/econsent .
+popd
 
 # JPSurv
-docker build -f applications/jpsurv/jpsurv.c6.dockerfile -t cbiit/jpsurv:c6 .
-docker build -f applications/jpsurv/jpsurv.c6.dockerfile -t cbiit/jpsurv:centos6 .
-docker build -f applications/jpsurv/jpsurv.c7.dockerfile -t cbiit/jpsurv:c7 .
-docker build -f applications/jpsurv/jpsurv.c7.dockerfile -t cbiit/jpsurv:centos7 .
-docker build -f applications/jpsurv/jpsurv.c7.dockerfile -t cbiit/jpsurv:latest .
-
-
+pushd applications/jpsurv
+docker build -f jpsurv.dockerfile -t cbiit/jpsurv .
+docker build -f jpsurv.dockerfile -t cbiitss/jpsurv .
+popd
 
 # LDlink
-docker build -f applications/LDlink/LDlink.c6.dockerfile -t cbiit/ldlink:c6 .
-docker build -f applications/LDlink/LDlink.c6.dockerfile -t cbiit/ldlink:centos6 .
-docker build -f applications/LDlink/LDlink.c7.dockerfile -t cbiit/ldlink:c7 .
-docker build -f applications/LDlink/LDlink.c7.dockerfile -t cbiit/ldlink:centos7 .
-docker build -f applications/LDlink/LDlink.c7.dockerfile -t cbiit/ldlink:latest .
-
-docker build -f applications/LDlink/MongoDB.c6.dockerfile -t cbiit/mongodb:c6 .
-docker build -f applications/LDlink/MongoDB.c6.dockerfile -t cbiit/mongodb:centos6 .
-docker build -f applications/LDlink/MongoDB.c7.dockerfile -t cbiit/mongodb:c7 .
-docker build -f applications/LDlink/MongoDB.c7.dockerfile -t cbiit/mongodb:centos7 .
-docker build -f applications/LDlink/MongoDB.c7.dockerfile -t cbiit/mongodb:latest .
-
+pushd applications/LDlink
+docker build -f LDlink.c6.dockerfile -t cbiit/ldlink .
+docker build -f LDlink.c6.dockerfile -t cbiitss/ldlink .
+popd
 
 # Lung Cancer Screening
-docker build -f applications/lungCancerScreening/lungCancerScreening.c6.dockerfile -t cbiit/lungcancerscreening:c6 .
-docker build -f applications/lungCancerScreening/lungCancerScreening.c6.dockerfile -t cbiit/lungcancerscreening:centos6 .
-docker build -f applications/lungCancerScreening/lungCancerScreening.c7.dockerfile -t cbiit/lungcancerscreening:c7 .
-docker build -f applications/lungCancerScreening/lungCancerScreening.c7.dockerfile -t cbiit/lungcancerscreening:centos7 .
-docker build -f applications/lungCancerScreening/lungCancerScreening.c7.dockerfile -t cbiit/lungcancerscreening:latest .
-
+pushd applications/lungCancerScreening
+docker build -f lungCancerScreening.dockerfile -t cbiit/lungcancerscreening .
+docker build -f lungCancerScreening.dockerfile -t cbiitss/lungcancerscreening .
+popd
 
 # NCIDose
-docker build -f applications/ncidose/ncidose.c6.dockerfile -t cbiit/ncidose:c6 .
-docker build -f applications/ncidose/ncidose.c6.dockerfile -t cbiit/ncidose:centos6 .
-docker build -f applications/ncidose/ncidose.c7.dockerfile -t cbiit/ncidose:c7 .
-docker build -f applications/ncidose/ncidose.c7.dockerfile -t cbiit/ncidose:centos7 .
-docker build -f applications/ncidose/ncidose.c7.dockerfile -t cbiit/ncidose:latest .
+pushd applications/ncidose
+docker build -f ncidose.dockerfile -t cbiit/ncidose .
+docker build -f ncidose.dockerfile -t cbiitss/ncidose .
+popd
 
-
-# Pathway analysis tool
-docker build -f applications/pathway/pathway.c6.dockerfile -t cbiit/pathway:c6 .
-docker build -f applications/pathway/pathway.c6.dockerfile -t cbiit/pathway:centos6 .
-docker build -f applications/pathway/pathway.c7.dockerfile -t cbiit/pathway:c7 .
-docker build -f applications/pathway/pathway.c7.dockerfile -t cbiit/pathway:centos7 .
-docker build -f applications/pathway/pathway.c7.dockerfile -t cbiit/pathway:latest .
+# Pathway
+pushd applications/pathway
+docker build -f pathway.dockerfile -t cbiit/pathway .
+docker build -f pathway.dockerfile -t cbiitss/pathway .
+popd
