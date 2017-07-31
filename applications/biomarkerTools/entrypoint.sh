@@ -11,18 +11,15 @@ mod_wsgi-express start-server /deploy/app/$APP_NAME.wsgi \
   --document-root /deploy/app \
   --working-directory /deploy/app \
   --directory-index index.html \
-  --processes 2 \
+  --processes 4 \
   --threads 1 \
   --initial-workers 1 \
-  --socket-timeout 900 \
+  --request-timeout 900 \
   --queue-timeout 900 \
   --connect-timeout 900 \
+  --compress-responses \
   --log-directory /deploy/logs \
+  --log-to-terminal \
   --access-log \
   --access-log-name $APP_NAME-access.log \
-  --error-log-name $APP_NAME.log \
-  --include-file /etc/httpd/conf.d/additional_configuration.conf &
-
-sleep 1
-
-tail -f /deploy/logs/$APP_NAME.log
+  --include-file /etc/httpd/conf.d/wsgi.conf
