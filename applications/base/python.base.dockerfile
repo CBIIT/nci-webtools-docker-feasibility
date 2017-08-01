@@ -2,7 +2,7 @@ FROM cbiit/centos7:base
 
 LABEL \
     BASE_OS="CentOS 7" \
-    DEFAULT_IMAGE="cbiit/python_base" \
+    DEFAULT_IMAGE="cbiit/python" \
     DEFAULT_TAG="latest" \
     DESCRIPTION="CentOS 7 / Python 2.7.5" \
     VERSION="1.0" \

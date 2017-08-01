@@ -1,8 +1,8 @@
-FROM cbiit/python_base:latest
+FROM cbiit/python:latest
 
 LABEL \
     BASE_OS="CentOS 7" \
-    DEFAULT_IMAGE="cbiit/r_base" \
+    DEFAULT_IMAGE="cbiit/r" \
     DEFAULT_TAG="latest" \
     DESCRIPTION="CentOS 7 / Python 2.7.5 / R 3.4.1" \
     VERSION="1.0" \
@@ -25,6 +25,6 @@ RUN { \
 } | tee -a "/usr/lib64/R/library/base/R/Rprofile"
 
 RUN ln -s /usr/lib/jvm/jre/lib/amd64/server/libjvm.so /usr/lib64/libjvm.so \
- && install -Dv /dev/null /usr/share/doc/R-3.4.1/html/R.css
+ && install -Dv /dev/null /usr/share/doc/R-3.4.{0-9}/html/R.css
 
 CMD ["R"]

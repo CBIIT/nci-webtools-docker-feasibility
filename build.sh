@@ -1,12 +1,21 @@
 #!/bin/bash
 
 # Base Images
-pushd applications/base
-docker build -f python-base.dockerfile -t cbiit/python_base .
-docker build -f python-base.dockerfile -t cbiitss/python_base .
-docker build -f r-base.dockerfile -t cbiit/r_base .
-docker build -f r-base.dockerfile -t cbiitss/r_base .
-popd
+docker build \
+  -f applications/base/python.base.dockerfile \
+  -t cbiit/python:base \
+  -t cbiit/python:latest \
+  -t cbiitss/python:base \
+  -t cbiitss/python:latest \
+  applications/build-context
+
+docker build \
+  -f applications/base/r.base.dockerfile \
+  -t cbiit/r:base \
+  -t cbiit/r:latest \
+  -t cbiitss/r:base \
+  -t cbiitss/r:latest \
+  applications/build-context
 
 # Absolute Risk Calculator
 pushd applications/absoluteRisk

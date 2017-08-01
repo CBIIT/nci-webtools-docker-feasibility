@@ -1,12 +1,12 @@
-FROM cbiit/r_base:latest
+FROM cbiit/r-base:latest
 
 LABEL \
   BASE_IMAGE="cbiit/centos7:base" \
-  DEFAULT_IMAGE="cbiit/biomarkertools" \
+  DEFAULT_IMAGE="cbiit/biomarker-tools" \
   DEFAULT_TAG="base" \
   DESCRIPTION="Deployment environment for biomarker tools suite" \
   VERSION="1.0" \
-  UID="BIOMARKERTOOLS_BASE"
+  UID="BIOMARKER_TOOLS_BASE"
 
 RUN yum -y install epel-release \
  && yum -y upgrade \
