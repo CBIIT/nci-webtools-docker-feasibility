@@ -9,6 +9,9 @@ LABEL \
     VERSION="2.7.5" \
     UID="PYTHON_2.7.5"
 
+RUN yum -y install yum-plugin-ovl \
+ && yum clean all
+
 RUN yum -y update \
  && yum -y install \
     epel-release \
