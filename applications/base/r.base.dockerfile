@@ -13,6 +13,8 @@ RUN yum -y update \
  && yum -y install \
     epel-release \
  && yum -y install \
+    curl-devel \
+    openssl-devel \
     R \
     R-devel \
  && yum clean all
@@ -28,6 +30,6 @@ RUN { \
 RUN R -e "install.packages('devtools')"
 
 RUN ln -s /usr/lib/jvm/jre/lib/amd64/server/libjvm.so /usr/lib64/libjvm.so \
- && install -Dv /dev/null /usr/share/doc/R-3.{0-9}.{0-9}/html/R.css
+ && mkdir -p /usr/share/doc/R-3.{0..9}.{0..9}/html/
 
 CMD ["R"]
