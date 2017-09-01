@@ -1,4 +1,4 @@
-FROM cbiitss/r:base
+FROM cbiitss/r_base
 
 LABEL \
     BASE_IMAGE="cbiit/centos7:base" \

@@ -1,10 +1,10 @@
-FROM cbiitss/python:base
+FROM cbiitss/python:2.7
 
 LABEL \
-    BASE_OS="CentOS 7" \
-    DEFAULT_IMAGE="cbiitss/r" \
-    DEFAULT_TAG="base" \
-    DEFAULT_CONTAINER="r" \
+    BASE_IMAGE="cbiit/centos7:base" \
+    DEFAULT_IMAGE="cbiitss/r_base" \
+    DEFAULT_TAG="latest" \
+    DEFAULT_CONTAINER="r_base" \
     DESCRIPTION="CentOS 7 / Python 2.7.5 / R 3.4.x" \
     VERSION="3.4.x" \
     UID="R_3.4.x"

@@ -1,9 +1,9 @@
-FROM cbiitss/python:base
+FROM cbiit/centos7:base
 
 LABEL \
-    BASE_OS="CentOS 7" \
+    BASE_IMAGE="cbiit/centos7:base" \
     DEFAULT_IMAGE="cbiitss/python" \
-    DEFAULT_TAG="latest" \
+    DEFAULT_TAG="3.6" \
     DEFAULT_CONTAINER="python" \
     DESCRIPTION="CentOS 7 / Python 3.6.x" \
     VERSION="3.6.x" \

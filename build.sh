@@ -4,19 +4,19 @@
 
 # Base Images
 docker build \
-  -f applications/base/python.base.dockerfile \
-  -t cbiitss/python:base \
+  -f applications/base/python.2.7.dockerfile \
+  -t cbiitss/python:2.7 \
   applications/
 
 docker build \
-  -f applications/base/python.latest.dockerfile \
-  -t cbiitss/python:latest \
+  -f applications/base/python.3.6.dockerfile \
+  -t cbiitss/python:3.6 \
   applications/
 
 docker build \
-  -f applications/base/r.base.dockerfile \
-  -t cbiitss/r:base \
-  -t cbiitss/r:latest \
+  -f applications/base/r_base.3.4.dockerfile \
+  -t cbiitss/r_base:3.4 \
+  -t cbiitss/r_base:latest \
   applications/
 
 # Absolute Risk Calculator
