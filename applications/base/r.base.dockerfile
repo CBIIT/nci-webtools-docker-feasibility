@@ -25,6 +25,8 @@ RUN { \
     echo "})"                                           ;\
 } | tee -a "/usr/lib64/R/library/base/R/Rprofile"
 
+RUN R -e "install.packages('devtools')"
+
 RUN ln -s /usr/lib/jvm/jre/lib/amd64/server/libjvm.so /usr/lib64/libjvm.so \
  && install -Dv /dev/null /usr/share/doc/R-3.{0-9}.{0-9}/html/R.css
 

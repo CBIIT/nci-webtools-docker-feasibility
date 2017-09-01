@@ -16,19 +16,20 @@ RUN yum -y install epel-release \
     readline-devel \
  && yum clean all
 
-RUN RUN pip install --upgrade \
+RUN pip install --upgrade \
     pip \
     setuptools \
  && pip install \
-    flask \
-    mod_wsgi \
-    rpy2
+    flask==0.12.2 \
+    mod_wsgi==4.5.18 \
+    rpy2==2.8.6
 
-RUN R -e "install.packages(c( \
-    'pROC', \
-    'RJSONIO', \
-    'stringr', \
-    'xlsx'))"
+RUN R -e " \
+    devtools::install_version('pROC',    version = '1.10.0' ); \
+    devtools::install_version('RJSONIO', version = '1.3-0'  ); \
+    devtools::install_version('stringr', version = '1.2.0'  ); \
+    devtools::install_version('xlsx',    version = '0.5.7'  ); \
+";
 
 ENV APP_NAME="biomarkerTools" \
     _JAVA_OPTIONS="-Xss2560k -Xmx2g"
