@@ -9,6 +9,9 @@ LABEL \
     VERSION="3.6.x" \
     UID="PYTHON_3.6.x"
 
+RUN yum -y install yum-plugin-ovl \
+ && yum clean all
+
 RUN yum -y update \
  && yum -y install \
     epel-release \

@@ -6,18 +6,18 @@
 docker build \
   -f applications/base/python.base.dockerfile \
   -t cbiitss/python:base \
-  applications/build_context
+  applications/
 
 docker build \
   -f applications/base/python.latest.dockerfile \
   -t cbiitss/python:latest \
-  applications/build_context
+  applications/
 
 docker build \
   -f applications/base/r.base.dockerfile \
   -t cbiitss/r:base \
   -t cbiitss/r:latest \
-  applications/build_context
+  applications/
 
 # Absolute Risk Calculator
 ##  docker build \
@@ -37,17 +37,17 @@ docker build \
 docker build \
   -f applications/biomarker_tools/biomarker_tools.base.dockerfile \
   -t cbiitss/biomarker_tools:base \
-  applications/build_context
+  applications/
 
 docker build \
   -f applications/biomarker_tools/biomarker_tools.latest.dockerfile \
   -t cbiitss/biomarker_tools:latest \
-  applications/build_context
+  applications/
 
 docker build \
   -f applications/biomarker_tools/biomarker_tools.1.0.2.dockerfile \
   -t cbiitss/biomarker_tools:1.0.2 \
-  applications/build_context
+  applications/
 
 ##
 ##  # Cancer Terms API
