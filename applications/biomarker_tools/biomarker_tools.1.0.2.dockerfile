@@ -3,7 +3,7 @@ FROM cbiitss/biomarker_tools:base
 LABEL \
     BASE_IMAGE="cbiit/centos7:base" \
     DEFAULT_IMAGE="cbiitss/biomarker_tools" \
-    DEFAULT_TAG="1.0.2_20170728" \
+    DEFAULT_TAG="1.0.2" \
     DEFAULT_CONTAINER="biomarker_tools" \
     DESCRIPTION="Deployment environment for biomarker tools suite" \
     VERSION="1.0.2" \
