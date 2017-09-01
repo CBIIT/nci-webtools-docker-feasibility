@@ -2,26 +2,35 @@ FROM cbiit/r_base:c7
 
 LABEL \
   BASE_OS="CentOS 7" \
-  DEFAULT_IMAGE="cbiit/jpsurv" \
-  DEFAULT_TAG="centos7" \
-  DESCRIPTION="Deployment environment for JPSurv (based on CentOS 7)" \
+  DEFAULT_IMAGE="cbiit/lungcancerscreening" \
+  DEFAULT_TAG="centos6" \
+  DESCRIPTION="Deployment environment for Lung Cancer Screening tool (based on CentOS 7)" \
   VERSION="1.0" \
-  UID="JPSURV_1.0_C7"
+  UID="LUNGCANCERSCREENING_1.0_C7"
 
-RUN yum -y install epel-release \
- && yum -y upgrade \
+RUN yum -y upgrade \
  && yum -y install \
+    gcc \
     httpd-devel \
-    readline-devel \
+    https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.2.1/wkhtmltox-0.12.2.1_linux-centos7-amd64.rpm \
  && yum clean all
 
+
 RUN pip install --upgrade \
+    pip \
+    setuptools \
+ && pip install \
     flask \
     mod_wsgi \
-    pip \
-    rpy2 \
- && R -e "install.packages('rjson')" \
- && R -e "install.packages('https://nciws-d709-v.nci.nih.gov/cbiit-package/cbiit/packages/JPSurv_2.0.19.tar.gz', repos = NULL)"
+    pdfkit
+
+RUN R -e "install.packages(c( \
+    'RJSONIO', \
+    'stringr', \
+    'VGAM', \
+    'https://nciws-d709-v.nci.nih.gov/cbiit-package/cbiit/packages/coxph.risk_0.2.tar.gz'))"
+
+
 
 RUN echo -e '                                            \n\
 <FilesMatch "\.(?i:conf|db|ini|py|pyc|wsgi|xml|r|md)$">  \n\
@@ -34,7 +43,7 @@ RUN mkdir -p /deploy
 WORKDIR /deploy
 
 ENTRYPOINT ["mod_wsgi-express"]
-CMD ["start-server", "app/jpsurv.wsgi", \
+CMD ["start-server", "app/lungCancerScreening.wsgi", \
      "--port", "8000", \
      "--document-root", "app", \
      "--working-directory", "app", \
@@ -50,6 +59,6 @@ CMD ["start-server", "app/jpsurv.wsgi", \
      "--log-directory", "logs", \
      "--rotate-logs", \
      "--access-log", \
-     "--access-log-name", "jpsurv-access.log", \
-     "--error-log-name", "jpsurv.log", \
+     "--access-log-name", "lungCancerScreening-access.log", \
+     "--error-log-name", "lungCancerScreening.log", \
      "--include-file", "/etc/httpd/conf.d/additional_configuration.conf"]

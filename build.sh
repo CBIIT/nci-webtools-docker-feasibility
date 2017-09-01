@@ -1,5 +1,7 @@
 #!/bin/bash
 
+## These commands build base images for each analysis tool
+
 # Base Images
 docker build \
   -f applications/base/python.base.dockerfile \
@@ -7,7 +9,7 @@ docker build \
   -t cbiit/python:latest \
   -t cbiitss/python:base \
   -t cbiitss/python:latest \
-  applications/build-context
+  applications/build_context
 
 docker build \
   -f applications/base/r.base.dockerfile \
@@ -15,64 +17,74 @@ docker build \
   -t cbiit/r:latest \
   -t cbiitss/r:base \
   -t cbiitss/r:latest \
-  applications/build-context
+  applications/build_context
 
 # Absolute Risk Calculator
-pushd applications/absoluteRisk
-docker build -f absoluteRisk.dockerfile -t cbiit/absoluterisk .
-docker build -f absoluteRisk.dockerfile -t cbiitss/absoluterisk .
-popd
+docker build \
+  -f applications/absolute-risk-calculator/absolute-risk-calculator.base.dockerfile \
+  -t cbiit/absolute-risk-calculator:base \
+  -t cbiitss/absolute-risk-calculator:base \
+  applications/build_context
 
-# Age Period Cohort Tool
-pushd applications/apc
-docker build -f apc.dockerfile -t cbiit/apc .
-docker build -f apc.dockerfile -t cbiitss/apc .
-popd
+# Age Period Cohort (APC) Web Tool
+docker build \
+  -f applications/apc/apc.base.dockerfile \
+  -t cbiit/apc:base \
+  -t cbiitss/apc:base \
+  applications/build_context
 
 # Biomarker Tools
-pushd applications/biomarkerTools
-docker build -f biomarkerTools.dockerfile -t cbiit/biomarkertools .
-docker build -f biomarkerTools.dockerfile -t cbiitss/biomarkertools .
-popd
+docker build \
+  -f applications/biomarker_tools/biomarker_tools.base.dockerfile \
+  -t cbiit/biomarker_tools:base \
+  -t cbiitss/biomarker_tools:base \
+  applications/build_context
 
-# Cancer Terms
-pushd applications/CancerTerms
-docker build -f CancerTerms.dockerfile -t cbiit/cancerterms .
-docker build -f CancerTerms.dockerfile -t cbiitss/cancerterms .
-popd
+# Cancer Terms API
+docker build \
+  -f applications/cancer_terms_api/cancer_terms_api.base.dockerfile \
+  -t cbiit/cancer_terms_api:base \
+  -t cbiitss/cancer_terms_api:base \
+  applications/build_context
 
 # eConsent
-pushd applications/econsent
-docker build -f econsent.dockerfile -t cbiit/econsent .
-docker build -f econsent.dockerfile -t cbiitss/econsent .
-popd
+docker build \
+  -f applications/econsent/econsent.base.dockerfile \
+  -t cbiit/econsent:base \
+  -t cbiitss/econsent:base \
+  applications/build_context
 
 # JPSurv
-pushd applications/jpsurv
-docker build -f jpsurv.dockerfile -t cbiit/jpsurv .
-docker build -f jpsurv.dockerfile -t cbiitss/jpsurv .
-popd
+docker build \
+  -f applications/jpsurv/jpsurv.base.dockerfile \
+  -t cbiit/jpsurv:base \
+  -t cbiitss/jpsurv:base \
+  applications/build_context
 
 # LDlink
-pushd applications/LDlink
-docker build -f LDlink.c6.dockerfile -t cbiit/ldlink .
-docker build -f LDlink.c6.dockerfile -t cbiitss/ldlink .
-popd
+docker build \
+  -f applications/ldlink/ldlink.base.dockerfile \
+  -t cbiit/ldlink:base \
+  -t cbiitss/ldlink:base \
+  applications/build_context
 
 # Lung Cancer Screening
-pushd applications/lungCancerScreening
-docker build -f lungCancerScreening.dockerfile -t cbiit/lungcancerscreening .
-docker build -f lungCancerScreening.dockerfile -t cbiitss/lungcancerscreening .
-popd
+docker build \
+  -f applications/lung_cancer_screening/lung_cancer_screening.base.dockerfile \
+  -t cbiit/lung_cancer_screening:base \
+  -t cbiitss/lung_cancer_screening:base \
+  applications/build_context
 
 # NCIDose
-pushd applications/ncidose
-docker build -f ncidose.dockerfile -t cbiit/ncidose .
-docker build -f ncidose.dockerfile -t cbiitss/ncidose .
-popd
+docker build \
+  -f applications/ncidose/ncidose.base.dockerfile \
+  -t cbiit/ncidose:base \
+  -t cbiitss/ncidose:base \
+  applications/build_context
 
 # Pathway
-pushd applications/pathway
-docker build -f pathway.dockerfile -t cbiit/pathway .
-docker build -f pathway.dockerfile -t cbiitss/pathway .
-popd
+docker build \
+  -f applications/pathway/pathway.base.dockerfile \
+  -t cbiit/pathway:base \
+  -t cbiitss/pathway:base \
+  applications/build_context
