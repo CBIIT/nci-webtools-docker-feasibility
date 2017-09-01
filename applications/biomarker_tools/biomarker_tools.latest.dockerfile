@@ -26,4 +26,4 @@ RUN git clone -b $APP_RELEASE $REPOSITORY_URL /tmp/repository \
  && rm -rf /tmp/repository /tmp/common-repository \
  && chown -R apache:apache /deploy
 
-CMD ["entrypoint.sh", "$APP_NAME"]
+CMD entrypoint.sh $APP_NAME

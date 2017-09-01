@@ -18,8 +18,5 @@ mod_wsgi-express start-server /deploy/app/$APP_NAME.wsgi \
   --queue-timeout 900 \
   --connect-timeout 900 \
   --compress-responses \
-  --log-directory /deploy/logs \
   --log-to-terminal \
-  --access-log \
-  --access-log-name $APP_NAME-access.log \
   --include-file /etc/httpd/conf.d/wsgi.conf

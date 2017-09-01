@@ -31,9 +31,6 @@ RUN R -e " \
     devtools::install_version('xlsx',    version = '0.5.7'  ); \
 ";
 
-ENV APP_NAME="biomarkerTools" \
-    _JAVA_OPTIONS="-Xss2560k -Xmx2g"
-
 COPY wsgi.conf /etc/httpd/conf.d/wsgi.conf
 
 COPY entrypoint.sh /usr/bin/entrypoint.sh
@@ -45,4 +42,9 @@ RUN mkdir -p /deploy/app /deploy/logs
 
 WORKDIR /deploy
 
-CMD ["entrypoint.sh", "$APP_NAME"]
+ENV APP_NAME="biomarkerTools" \
+    _JAVA_OPTIONS="-Xss2560k -Xmx2g"
+
+HEALTHCHECK CMD curl --fail http://localhost:8000/ || exit 1
+
+CMD entrypoint.sh $APP_NAME
