@@ -2,7 +2,7 @@ FROM ncidockerhub.nci.nih.gov/cbiit/centos7_base
 
 RUN echo -e "[cbiitrepo] \
                 \nname=cbiitrepo \
-                \nbaseurl=https://nciws-d870-v.nci.nih.gov/cbiit-repo7/ \
+                \nbaseurl=https://ncias-d1765-v.nci.nih.gov/cbiit-repo7/ \
                 \nenabled=1 \
                 \ngpgcheck=0 " > /etc/yum.repos.d/cbiitrepo.repo
 
@@ -40,6 +40,7 @@ RUN groupadd -g 3596 $CATALINA_USER \
 && chown -R ${CATALINA_USER}:${CATALINA_USER} /local/content/tomcat/$CONTAINER
 
 VOLUME /local/content/tomcat/$CONTAINER/webapps 
+VOLUME /local/content/tomcat/$CONTAINER/logs 
 
 EXPOSE 8080 8009
 
