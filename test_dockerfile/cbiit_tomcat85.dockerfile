@@ -2,7 +2,7 @@ FROM ncidockerhub.nci.nih.gov/cbiit/centos7_base
 
 RUN echo -e "[cbiitrepo] \
                 \nname=cbiitrepo \
-                \nbaseurl=https://ncias-d1765-v.nci.nih.gov/cbiit-repo7/ \
+                \nbaseurl=https://ncias-d1765-v.nci.nih.gov/7 \
                 \nenabled=1 \
                 \ngpgcheck=0 " > /etc/yum.repos.d/cbiitrepo.repo
 
