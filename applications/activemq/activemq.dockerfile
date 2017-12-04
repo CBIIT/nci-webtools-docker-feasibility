@@ -16,7 +16,10 @@ RUN sed -i '/override_install_langs/d' /etc/yum.conf \
  && yum clean all
 
 RUN yum -y update \
- && yum -y install java
+ && yum -y install \
+    gzip \
+    java \
+    tar \
  && yum clean all
 
 ENV ACTIVEMQ_HOME=/opt/activemq \
